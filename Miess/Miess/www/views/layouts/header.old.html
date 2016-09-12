@@ -1,0 +1,26 @@
+<div class="col-sm-12 miess_top">
+	<div class="pull-left miess_homebutton">
+		<button class="btn btn-xs btn-primary" ng-click="urlHome()"><span class="glyphicon glyphicon-home"></span>
+		</button>
+		&nbsp;
+		<a class="btn btn-xs btn-primary" href="#/profile">Profiel</a>
+	</div>
+	
+	
+	
+	<div class="dropdown miess_dropdown">
+		<a href="#" data-toggle="dropdown" class="dropdown-toggle">Mijn Account  <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+				<li><a href="5.php">Mijn berichten lezen</a></li>
+				<li><a href="6.php">Mijn groep aanpassen</a></li>
+				<li><a href="7.php">Mijn gegevens aanpassen</a></li>
+				<li class="divider"></li>
+				<li><a href="2.php"><span class="glyphicon glyphicon-list"></span>&nbsp; Andere agenda</a></li>
+				<li class="divider"></li>
+				<li><a href="1.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Uitloggen</a></li>
+		</ul>
+	</div>
+	<span class="miess_welcome hidden-xs">Welkom {{ username }}<br/>session: {{ sessionId }}</span>  
+	<img src="img/miess-agenda.png" class="img-responsive" alt="Miess Agenda">
+</div>
+	

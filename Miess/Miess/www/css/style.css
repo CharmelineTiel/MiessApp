@@ -1,0 +1,998 @@
+/* ### SITE ### */
+
+/* site algemeen */
+
+/* -------------------------------------------------------- */
+
+body, h1, h2, div, h4 {
+	font-family: Arial, Verdana, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+p {
+	margin: 0 0 18px 0
+} /* extra onder */
+
+a {
+	color: #0095da;
+}
+a:hover, a:focus {
+	text-decoration: none;
+	color: #D14B1B;
+}
+
+.table>tbody>tr>td {
+	padding: 12px 8px
+} /* 12 ipv 8 */
+
+.form-horizontal .control-label {
+	text-align: left;
+} /* links uirtlijnen is toch wat mooier */
+
+
+/* --- button algemeen --- */
+.btn-primary {
+	background-color: #0095da
+}
+
+.btn-primary.active {
+	background-color: #0095da
+}
+
+.btn-info {
+	background-color: #f8f2c0;
+	color: #dba815;
+	border-color: #dba815;
+}
+
+.btn-info:hover {
+	background-color: #dba815;
+	border-color: #dba815;
+}
+
+/* -------------------------------------------------------- */
+
+/* ### TOEVOEGINGEN BOVEN EN ONDER ### */
+
+
+/* --- headerbalk boven --- */
+div.miess_top {
+	border-bottom: 3px solid #0095da;
+	height: 72px;
+	margin: 0;
+} /* basis -15px margins opheffen */
+
+div.miess_top img {
+	float: right;
+	margin-top: 10px;
+}
+div.miess_top .miess_homebutton {
+	margin: 10px 0 0 -10px;
+	padding: 0;
+} 
+div.miess_top .miess_homebutton .btn-primary {
+	padding: 6px 10px
+}
+span.miess_welcome {
+	float: left;
+	margin-top: 11px;
+	padding: 6px;
+	color: #666;
+	position: absolute;
+	left: 190px;
+}
+
+.dropdown.miess_dropdown {
+	border: 1px solid transparent;
+	float: left;
+	display: inline;
+	position: absolute;
+	padding: 5px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	border-radius: 4px;
+	background-color: #FFF;
+	border-color: #CCC;
+	margin-top: 10px;
+	position: absolute;
+}
+.caret {
+	border-top: 4px solid #0095da;
+}
+a:hover.dropdown-toggle {
+	text-decoration: none;
+}
+
+#confirm {
+	z-index: 10;
+	margin-top: -30px;
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #0095da;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	background-color: #0095da;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+} /* confirmation slider */
+
+/* --- footerbalk onder --- */
+
+div.miess_bottom {
+	border-top: 3px solid #0095da;
+	height: 3px;
+	margin: 22px 0
+}
+
+/* -------------------------------------------------------- */
+
+/* ### TOEVOEGINGEN PAGINA ### */
+
+/* pagina titels */
+h1.miess_pagetitle {
+	font-weight: bold;
+	color: #D14B1B;
+	font-size: 25px;
+	border-radius: 6px;
+} 
+h1.miess_pagetitle div {
+	float: right;
+	font-size: 13px;
+	line-height: 13px;
+	margin-right: 2px;
+	color: #FFF;
+	background-color: #0095da;
+	height: 39px;
+	border-radius: 5px;
+	padding: 10px 3px 0 3px;
+} /* navigatie in header boven. default wit op blauw */
+
+h1.miess_pagetitle div a {
+	color: #FFF;
+	background-color: transparent;
+	margin: -2px 6px 0 6px;
+	padding: 3px 7px;
+	border-radius: 5px;
+	border: 1px dotted #FFF;
+}
+h1.miess_pagetitle div a:hover {
+	color: #0095da;
+	background-color: #FFF;
+}
+
+h2.miess_pagetitle {
+	font-weight: bold;
+	min-height: 28px;
+	color: #FFF;
+	font-size: 21px;
+}
+div.miess_pagetitle {
+	font-weight: normal;
+	color: #0095da;
+	font-size: 18px;
+	margin-top: 0;
+	margin-bottom: 18px;
+}
+/* --- scherm 2 specifiek --- 2 */
+div.miess_kiesagenda td {
+	background-color: #F1F1F1;
+	padding: 12px 8px;
+}
+div.miess_kiesagenda a {
+	color: #333;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+div.miess_kiesagenda a:hover {
+	color: #0095da;
+	text-decoration: none;
+}
+td.miess_addagenda div {
+	margin: 8px 0;
+	padding: 12px;
+	border: 1px solid #D4D4d4;
+	border-radius: 4px;
+	background-color: #eef8fa;
+} /* verzoek tot toevoegen */
+
+/* lijntje en extra padding tussen de blokken. Mag weg bij small screen*/
+.drawline {
+	border-left: 2px dotted #0095da;
+	padding-left: 24px;
+	margin-left: -4px;
+}
+ @media(max-width:767px) {
+.drawline {
+	border-left: 0;
+	padding-left: 0;
+	margin-left: 0;
+}
+}
+/* --- RECHTS --- */
+/* --- scherm 3 --- */
+
+/* headings rechts activiteit */
+/* toxus: changed to div */
+div.miess_act {
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+	padding: 10px 5px 10px 15px;
+	background-color: #0095da;
+	color: #FFF;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 0;
+	line-height: 130%;
+	/* background-image: url(../img/activiteit-header-bg.png); */
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+div.miess_act {
+	padding: 10px 15px 10px 15px;
+	background-color: #0095da;
+	color: #FFF;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 0;
+	line-height: 130%;
+	/* background-image: url(../img/activiteit-header-bg.png); */
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+div.miess_act_under {
+	height: 20px;
+	background-image: url(../img/divpijl.png);
+	background-position: right;
+	background-repeat: no-repeat;
+} /* blauwe pijltje */
+
+/* GROEPEN */
+
+	/* alle groepen 1 t/ 7 */
+div.panel-group .panel {
+	border-radius: 5px;
+}
+div.panel-heading {
+	background-position: top right;
+	background-repeat: no-repeat;
+
+}
+a panel-heading.title {
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 13px;
+	letter-spacing: 0px;
+}
+div.panel.panel-default.miess_groep1 > a, div.panel.panel-default.miess_groep2 > a, div.panel.panel-default.miess_groep3 > a, div.panel.panel-default.miess_groep4 > a, div.panel.panel-default.miess_groep5 > a, div.panel.panel-default.miess_groep6 > a, div.panel.panel-default.miess_groep7 > a {
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+div.panel.panel-default .form-group {
+	padding-left: 15px;
+}/* alle activiteiten kaders 15 padding links */ 
+
+table.table.tablenarrow td {
+	padding: 8px 4px;
+}/* tabels in de rechterkolom minder spacing */ 
+
+
+#nocalendar div.miess_act {
+	background-position:left; 
+	background-repeat:no-repeat; 
+	margin:-2px 0 0 0; 
+	padding-left:43px;
+	padding-right:0; 
+	font-size:16px; 
+	line-height:120%;
+	} /* icon ander kant bij de activiteit invulformulieren */
+
+#nocalendar div.miess_act_under{
+	height:20px; 
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+
+  
+  /* default */	
+.groep {
+	color:#0095da;
+}
+  /* 1 Contact 683db6 */
+  /* groep 1 */
+.groep1 {
+	color:#683db6;
+}
+div.panel.panel-default.miess_groep1 {
+	border-color: #683db6;
+}
+div.panel-heading.miess_groep1 {
+	background-image: url(../img/groep1-bg.png);
+	color: #683db6;
+}
+div.panel-heading.miess_groep1:hover, div.panel.panel-default.miess_groep1.active > a > div {
+	background-color: #683db6;
+	color: #FFF;
+}
+div.panel-heading.miess_groep1 a {
+	color: #683db6;
+}
+strong.miess_groep1 {
+	color: #683db6;
+	font-size: 120%;
+	line-height: 120%;
+}  
+
+div.miess_act.groep1 {
+	background-color:#683db6; 
+	background-image:url(../img/groep1-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep1{
+	height:20px; 
+	background-image:url(../img/divpijl-groep1.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+.fc-event.groep1 {
+	border-color:#683db6;
+	background-color:#e1d8f0;
+	background-image:url(../img/groep1-bg.png); 
+} /* bericht en in agenda */
+
+  /* 2 Eten drinken 96734a */
+  /* groep 2 */
+.groep2 {
+	color:#8e5401;
+}
+div.panel.panel-default.miess_groep2 {
+	border-color: #8e5401;
+}
+div.panel-heading.miess_groep2 {
+	background-image: url(../img/groep2-bg.png);
+	color: #8e5401;
+}
+div.panel-heading.miess_groep2:hover, div.panel.panel-default.miess_groep2.active > a > div {
+	background-color: #8e5401;
+	color: #FFF;
+}
+strong.miess_groep2 {
+	color: #8e5401;
+	font-size: 120%;
+	line-height: 120%;
+}
+
+div.miess_act.groep2 {
+	background-color:#8e5401; 
+	background-image:url(../img/groep2-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep2{
+	height:20px; 
+	background-image:url(../img/divpijl-groep2.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}  
+.fc-event.groep2 {
+	border-color:#8e5401;
+	background-color:#8e5401;
+	background-image:url(../img/groep2-bg.png); 
+} /* bericht en in agenda */
+
+
+  /* 3 Huishouden 21b5c2 */
+  /* groep 3 */
+.groep3 {
+	color:#21b5c2;
+}
+div.panel.panel-default.miess_groep3 {
+	border-color: #21b5c2;
+}
+div.panel-heading.miess_groep3 {
+	background-image: url(../img/groep3-bg.png);
+	color: #21b5c2;
+}
+div.panel-heading.miess_groep3:hover, div.panel.panel-default.miess_groep3.active > a > div {
+	background-color: #21b5c2;
+	color: #FFF;
+}
+strong.miess_groep3 {
+	color: #21b5c2;
+	font-size: 120%;
+	line-height: 120%;
+} 
+
+div.miess_act.groep3 {
+	background-color:#21b5c2; 
+	background-image:url(../img/groep3-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep3{
+	height:20px; 
+	background-image:url(../img/divpijl-groep3.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	} 
+.fc-event.groep3 {
+	border-color:#21b5c2;
+	background-color:#d3f0f3;
+	background-image:url(../img/groep3-bg.png); 
+} /* bericht en in agenda */
+
+
+  /* 4 Leuke dingen e65b07 */
+  /* groep 4 */
+.groep4 {
+	color: #e65b07;
+}
+div.panel.panel-default.miess_groep4 {
+	border-color: #e65b07;
+}
+div.panel-heading.miess_groep4 {
+	background-image: url(../img/groep4-bg.png);
+	color: #e65b07;
+}
+div.panel-heading.miess_groep4:hover, div.panel.panel-default.miess_groep4.active > a > div {
+	background-color: #e65b07;
+	color: #FFF;
+} /* active staat */
+strong.miess_groep4 {
+	color: #e65b07;
+	font-size: 120%;
+	line-height: 120%;
+}  
+
+div.miess_act.groep4 {
+	background-color:#e65b07; 
+	background-image:url(../img/groep4-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep4{
+	height:20px; 
+	background-image:url(../img/divpijl-groep4.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+.fc-event.groep4 {
+	border-color:#e65b07;
+	background-color:#fadecd;
+	background-image:url(../img/groep4-bg.png); 
+} /* bericht en in agenda */
+
+
+  /* 5 Medisch d44148 */
+  /* groep 5 */
+.groep5 {
+	color:#d44148;
+}
+div.panel.panel-default.miess_groep5 {
+	border-color: #d44148;
+}
+div.panel-heading.miess_groep5 {
+	background-image: url(../img/groep5-bg.png);
+	color: #d44148;
+}
+div.panel-heading.miess_groep5:hover, div.panel.panel-default.miess_groep5.active > a > div {
+	background-color: #d44148;
+	color: #FFF;
+}
+
+strong.miess_groep5 {
+	color: #d44148;
+	font-size: 120%;
+	line-height: 120%;
+}
+
+div.miess_act.groep5 {
+	background-color:#d44148; 
+	background-image:url(../img/groep5-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep5{
+	height:20px; 
+	background-image:url(../img/divpijl-groep5.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+.fc-event.groep5 {
+	border-color:#d44148;
+	background-color:#f6d9da;
+	background-image:url(../img/groep5-bg.png); 
+} /* bericht en in agenda */
+
+
+ /* 6 naar buiten 8bc12c */
+ /* groep 6 */
+.groep6 {
+	color:#8bc12c;
+}
+div.panel.panel-default.miess_groep6 {
+	border-color: #8bc12c;
+}
+div.panel-heading.miess_groep6 {
+	background-image: url(../img/groep6-bg.png);
+	color: #8bc12c;
+}
+div.panel-heading.miess_groep6:hover, div.panel.panel-default.miess_groep6.active > a > div {
+	background-color: #8bc12c;
+	color: #FFF;
+}
+strong.miess_groep6 {
+	color: #8bc12c;
+	font-size: 120%;
+	line-height: 120%;
+}  
+div.miess_act.groep6 {
+	background-color:#8bc12c; 
+	background-image:url(../img/groep6-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep6{
+	height:20px; 
+	background-image:url(../img/divpijl-groep6.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+.fc-event.groep6 {
+	border-color:#8bc12c;
+	background-color:#e8f3d5;
+	background-image:url(../img/groep6-bg.png); 
+} /* bericht en in agenda */
+
+
+  /* 7 Persoonlijke verzorging ee5eac */
+  /* groep 7 */
+.groep7 {
+	color:#ee5eac;
+}
+div.panel.panel-default.miess_groep7 {
+	border-color: #ee5eac;
+}
+div.panel-heading.miess_groep7 {
+	background-image: url(../img/groep7-bg.png);
+	color: #ee5eac;
+}
+div.panel-heading.miess_groep7:hover, div.panel.panel-default.miess_groep7.active > a > div {
+	background-color: #ee5eac;
+	color: #FFF;
+}
+strong.miess_groep7 {
+	color: #ee5eac;
+	font-size: 120%;
+	line-height: 120%;
+}  
+
+div.miess_act.groep7 {
+	background-color:#ee5eac; 
+	background-image:url(../img/groep7-bg.png); 
+	}/* activiteit invul pagina */
+
+div.miess_act_under.groep7{
+	height:20px; 
+	background-image:url(../img/divpijl-groep7.png);
+	background-position:top right;
+	background-repeat:no-repeat;
+	}
+.fc-event.groep7 {
+	border-color:#ee5eac;
+	background-color:#fcdfee;
+	background-image:url(../img/groep7-bg.png); 
+} /* bericht en in agenda */
+
+
+/* -- rechts advertentie scroller -- */
+/* NB volgende bestand is aangepast extern : toegevoegd/totem-scroller/css/style.css  */
+
+/* -------------- LINKS --------------- */
+
+/*
+div.miess_berichten {
+	padding: 15px 52px 15px 22px;
+	background-color: #dba815;
+	color: #FFF;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 0;
+	line-height: 150%;
+}  
+
+kan weg */
+
+
+/* tabel onderdelen */
+
+span.new_row {
+	display: block;
+	font-size: 12px;
+}
+span.new_row a {
+	display: block;
+	font-size: 14px;
+}
+
+.miess_color_group1 {
+	color: #fc6104;
+}
+/* ------------ MIDDEN ------------*/
+
+/* NB volgende bestand is aangepast extern : 
+/toegevoegd/toegevoegd/fullcalendar-1.6.4/fullcalendar/fullcalendar.js  (settings)
+/inc.agenda.bestanden.php (settings)
+*/
+
+/* agenda aanpassen 
+#calendar {
+	margin-top: 22px;
+	position: relative;
+	padding-left: 35px;
+} 
+*/
+
+.fc-header-title h2 {
+	font-size: 18px;
+	color: #0095da;
+    padding-top: 15px;
+}
+/* --------------- Maken van een activiteit. Dan geen kalender ----------- */
+#nocalendar {
+	margin-top: 22px;
+	position: relative;
+	padding-left: 35px;
+} /* ruimte voor de tabs bij geen kalender*/
+
+.aditionalExp {
+	padding-left: 15px;
+	color: #999;
+} /* text col naast activiteit form */
+.aditionalExp div {
+	color: #999;
+	margin-top: 12px;
+}
+
+/* --------  Vak dat schuift over agenda  ----------- */
+div.overlay_calendar {
+	position: absolute;
+	background-color: #FFF;
+	top: 0;
+	min-height: 500px;
+	z-index: 20;
+	box-shadow: 5px 5px 5px #ccc;
+	margin-left: -52px;
+}
+div.overlay_calendar .overlay_tab {
+	position: absolute;
+	right: -90px;
+	font-weight: bold;
+	writing-mode: tb-rl;
+	top: 50px;
+	width: 140px; /* indien aangepast ook right en top aanpasen*/
+	text-align: center;
+	padding: 10px 15px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #0095da;
+	color: #FFF;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	box-shadow: -5px 5px 5px #ccc;
+	font-family: arial, Verdana, Geneva, sans-serif;
+}
+div.overlay_calendar .overlay_tab a {
+	color: #FFF;
+	text-decoration: none;
+}
+div.overlay_calendar .overlay_tab .badge {
+	background-color: #FFF;
+	color: #0095da;
+}
+
+/* -- buttons in de balken van scherm 5 en 6 (berichten en uitnodigingen) boven naast de h1 title. default blauw -- */
+
+div.miess_act div {
+	
+	font-size: 13px;
+	line-height: 13px;
+	margin-right: 2px;
+}
+div.miess_act div a, div.miess_act div input {
+	color: #FFF;
+	background-color: transparent;
+	margin: -2px 6px 0 6px;
+	padding: 3px 7px;
+	border-radius: 5px;
+	border: 1px dotted #FFF;
+}
+div.miess_act div a:hover {
+	color: #666; /* alle gaan naar zwarte tekst. kan ook in de 4 groepkleuren */
+	background-color: #FFF;
+}
+
+/* -------   overige in scherm 5 en 6 (berichten en uitnodigingen) -----  */
+div.miess_berichtlijst h4 {
+	font-size: 18px;
+	color: #FFF;
+	border-radius: 6px;
+	padding: 15px;
+	background-color: #5fa345;
+	margin-top: 0;
+} 
+div.miess_berichtlijst h4 span {
+	display: block;
+	font-size: 13px;
+	padding: 8px 0;
+	line-height: 150%;
+}
+div.miess_berichtlijst p {
+	padding: 15px 6px;
+	border-bottom: 1px dotted #CCC;
+	margin: 0;
+}
+div.miess_berichtlijst p.active {
+	background-image: url(../img/active-row-l.png);
+	background-position: center left;
+	background-repeat: no-repeat;
+	padding-left:30px;
+} /* actieve menu  */
+div.miess_berichtlijst p.active a {
+	font-weight: bold;
+}
+div.miess_berichtlijst p:nth-child(odd) {
+	background-color: #F1F1F1;
+}
+span.ldatum {
+	color: #666;
+	font-size: 11px;
+	display: block;
+}
+span.bdatum {
+	color: #666;
+	font-size: 11px;
+}
+div.miess_berichtlijst p:last-child {
+	border-bottom: 0px dotted #CCC;
+	background-color: transparent;
+}
+.miess_berichtenveld {
+}
+.miess_berichtonderwerp {
+	color: #0095da;
+	font-weight: bold;
+}
+.miess_berichtvak {
+	-moz-box-shadow: inset 0 0 7px #999;
+	-webkit-box-shadow: inset 0 0 7px #999;
+	box-shadow: inset 0 0 7px #999;
+	border-radius: 4px;
+	padding: 12px;
+	margin: 12px 0;
+	border: 1px solid #F1F1F1;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	color: #333;
+} /* in bewerk modus */
+
+td.miess_actmessage > div {
+	margin: 8px 0;
+	padding: 12px;
+	border: 1px solid #D4D4d4;
+	border-radius: 4px;
+	background-position: top right;
+	background-repeat: no-repeat;
+	padding-right: 42px;
+	color:#333;
+	font-size:14px;
+} /* als er een activiteit aan bericht hangt */
+
+
+/* ------------- popup modals ---------------- */
+div#myModalLabel.modal-title {
+	background-color: #E5E5E5;
+	padding: 10px 15px 10px 15px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 5px;
+	line-height: 130%;
+}
+div.miess_modal_under {
+	height: 20px;
+	background-image: url(../img/divmodal.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+.modal-footer {
+	margin-top: 0;
+}
+.modal-header {
+	padding-bottom: 0px;
+	border-bottom: none;
+} /* kleur wisselen via de class */
+
+/* -- generating the agenda backgrounds */
+.act-item-style {
+	padding: 4px;
+	min-height: 50px;
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+.act-style-1 {
+	background-color: #F9DBDF !important;
+	border-color: #d44148 !important;
+	background-image:url(../img/groep1-bg.png); 
+	color: #d44148 !important;
+}
+.act-style-2 {
+	background-color: #F9DBDF !important;
+	border-color: #d44148 !important;
+	background-image:url(../img/groep2-bg.png); 
+	color: #d44148 !important;
+}
+.act-style-3 {
+	background-color: #F9DBDF !important;
+	border-color: #21b5c2 !important;
+	background-image:url(../img/groep3-bg.png); 
+	color: #21b5c2 !important;
+}
+.act-style-4 {
+	background-color: #F9DBDF !important;
+	border-color: #e65b07 !important;
+	background-image:url(../img/groep4-bg.png); 
+	color: #21b5c2 !important;	
+}
+.act-style-5 {
+	background-color: #F9DBDF !important;
+	border-color: #d44148 !important;
+	background-image:url(../img/groep5-bg.png); 
+	color: #21b5c2 !important;	
+}
+.act-style-6 {
+	background-color: #CFF1D7 !important;
+	border-color: #8bc12c !important;
+	background-image:url(../img/groep6-bg.png); 
+	color: #21b5c2 !important;	
+}
+.act-style-7 {
+	background-color: #F9DBDF !important;
+	border-color: #d44148 !important;
+	background-image:url(../img/groep7-bg.png); 
+	color: #21b5c2 !important;
+}
+
+/* toxus: added for new navbar */
+.navbar-space {
+	margin-bottom: 54px;
+}
+
+
+/** the info on the left side */
+.active-agenda {
+	background-color: #0095DA;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: -5px 5px 5px #CCCCCC;
+	color: #FFFFFF;
+	font-family: arial,Verdana,Geneva,sans-serif;
+	font-weight: bold;
+	left: -157px;
+	padding: 10px 15px;
+	position: absolute;
+	right: -90px;
+	text-align: center;
+	top: 310px;
+	transform: rotate(-90deg);
+	width: 537px;
+}
+
+/* ADDED 3-9-2016 and later */
+
+/** button add activity */
+.btn-add-activity, .btn-add-activity:hover, .btn-add-activity:focus, .btn-add-activity:active{
+    position:absolute;
+    right: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #2ecc71;
+    border: #2ecc71;
+    top: -100px;
+}
+
+/** Top Menu styling */
+.navbar-toggle .icon-bar{
+    background-color: #fff;
+    width: 27px;
+    height: 3px;
+}
+.navbar-toggle {
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.21);
+    padding: 5px 4px;
+    border-radius: 3px;
+}
+a.list-group-item.active, 
+a.list-group-item.active:hover, 
+a.list-group-item.active:focus{
+    background-color: #0094da;
+    border-color: #0094da;
+}
+.list-group-item {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+}
+.list-group-item:first-child {
+     border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.navbar-toggle {
+    margin-right: 0; 
+}
+.navmenu{
+    width: 200px;
+}
+@media (min-width: 768px) {
+    .navbar-toggle {
+         display: block; 
+    }
+}
+.list-group-item.glyphicon{
+    color: #0094da;
+}
+.agenda-title{
+    margin-top: 10px;
+}
+/*Floating button + activities */
+#floating-button{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #179103;
+  border-color:#179103;
+  position: fixed;
+  bottom: 80px;
+  right: 35px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #999;
+}
+#container-floating{
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 30px;
+  right: 10px;
+  z-index: 50;
+}
+.plus{
+  color: white;
+  position: absolute;
+  top: 0;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  line-height: 50px;
+  font-size: 38px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  animation: plus-out 0.3s;
+  transition: all 0.3s;
+}
+
+/*Add new activity form*/
+.input-group .form-control {
+     position: static; 
+}

@@ -1,0 +1,24 @@
+<h3 ng-show="$first">Uitleg over uitnodigen</h3>
+<div class="panel panel-default invite view-invitation" ng-show="user.isTempAccount==0">
+  <div class="panel-heading ">
+    gebruiker zonder delen
+  </div>
+  <div class="panel-body">
+    <p>
+      Je hebt nog geen andere gebruikers aan je agenda toegevoegd. Dat is nodig om samen je agenda te
+      beheren en berichten en uitnodigingen naar elkaar te versturen.
+    </p>
+    <p>
+      Om nieuwe gebruikers aan de agenda toe te voegen, klik je bij Uitnodigen rechtsboven op de  button ‘nieuw +’.
+    </p>
+  </div>
+</div>
+<div class="panel panel-default invite view-invitation" ng-show="user.isTempAccount==1">
+  <div class="panel-heading ">
+    gebruiker niet ingelogd
+  </div>
+  <div class="panel-body">
+    <p>Je bent nog niet ingelogd. Om de agenda met anderen te delen en binnen de groep berichten te
+    versturen en meer, moet je aangemeld zijn. Meld je aan via Instellingen, rechtsonder.</p>
+  </div>
+ </div>

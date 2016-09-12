@@ -1,0 +1,131 @@
+<!--
+  Agenda definition
+-->
+<div id="id-agenda"  ng-controller="AgendaController">
+    <div id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <div class="col-md-12 agenda-title" ng-controller="ProfileController">
+            <h3> {{ model.agendaTitle }}</h3>
+        </div> 
+        <div class="list-group">
+            <a class="list-group-item"
+                 ng-class="{active: menu.activeAgenda=='agendaDay'}"
+                 ng-click="menuClick('agendaDay')">
+                <span class="glyphicon glyphicon-th-list">&nbsp;Dag</span>
+            </a>
+            <a class="list-group-item"
+                 ng-class="{active: menu.activeAgenda=='agendaWeek'}"
+                 ng-click="menuClick('agendaWeek')">
+                <span class="glyphicon glyphicon-th-large">&nbsp;Week</span>
+            </a>
+            <a class="list-group-item"
+                 ng-class="{active: menu.activeAgenda=='month'}"
+                 ng-click="menuClick('month')">
+                <span class="glyphicon glyphicon-th">&nbsp;Maand</span>
+            </a>
+            <br />
+            <!--<a class="list-group-item"
+               ng-click="today()">
+                <span class="glyphicon glyphicon-th">&nbsp;Vandaag</span>
+            </a>-->
+        </div>
+        <div class="col-md-12">
+            <h3>Agenda's</h3>
+            <p>coming soon..</p>
+        </div>
+            <!--<div class="row" ng-repeat='current in agendas'>
+            <div class="well" ng-class="{ 'xxx' : agenda.id == current.id }">
+                 four states: owner, invited, accepted, denied (block is not show)
+                <h4 ng-show='current.isOwner == 1' class="well">Mijn agenda</h4>
+                <h4 ng-show='current.isAccepted == 1 && current.isOwner == 0' class="well">Aangenomen</h4>
+                <h4 ng-show='current.isDenied == 1' class="well">Afgewezen</h4>
+                <div ng-hide='current.isOwner == 1 || current.isAccepted == 1 || current.isDenied == 1'>
+                    <h4 ng-show='current.isDenied' class="well" >Uitgenodigd</h4>
+                    <button ng-click='acceptAgenda(current.id)' class='btn btn-primary'>Accepteren</button>
+                </div>
+                <dl>
+                    <dd ng-hide="{{ //current.name == null }}">gebruikers naam</dd>
+                    <dt ng-hide="{{ //current.name == null }}"> {{ //current.name }} </dt>
+                </dl>
+                <div ng-show="current.isAccepted == 1 && agenda.id != current.id">
+                    <button ng-click='activateAgenda(current.id)' class='btn btn-primary'>Activeren</button>
+                </div>
+            </div>
+        </div>-->
+        </div>
+
+	<header id="id-header"  class="bar bar-nav row">
+        <div class="col-xs-4">
+            <button class="btn" ng-click="previous()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <div class="header-text hidden-xs">{{ menu.date }}&nbsp;</div>
+            <button class="btn" ng-click="next()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+        <div class="col-xs-8">
+            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+</header>
+        <nav id="id-nav"
+             style="top: {{ navTop() }}"
+             class="bar bar-tab"
+             ng-hide="keyboardShown"
+             ng-include="'views/layouts/header.html'">
+        </nav>
+
+        <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()">
+                <div ng-include="'views/agenda/fullCalendar.html'"></div>
+                <div id="id-agenda-fixed-panel" class="scroll-box col-sm-offset-9 col-sm-3 col-xs-offset-7 col-xs-5 " style="position: fixed">
+                    <div id="create" ng-show="formState=='create'" ng-include="'views/agenda/new.html'">
+                    </div>
+                </div>
+                <div id="container-floating">
+                            <div id="floating-button"
+                                    ng-click="add()"
+                                    ng-show="agenda.isWritable==1">
+                                <span class="plus glyphicon glyphicon-plus"></span>
+                            </div>
+                </div>
+            <!--<div ng-show="formState=='view'" ng-include="'views/agenda/view.html'">-->
+            </div>
+        </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="introModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Welkom bij de Miessagenda</h4>
+        </div>
+        <div class="modal-body" ng-show="user.isTempAccount==1">
+          <p>Welkom bij de MiessAgenda. Een handige APP om samen een agenda te beheren. Belangrijk icoon in
+          deze APP is de + rechtsboven. Hiermee kan je activiteiten invoeren in de agenda en nieuwe berichten
+          maken.</p>
+
+          <p>Om de agenda met anderen te delen en binnen de groep berichten te versturen en meer, moet je
+          aangemeld zijn. Meld je aan via Instellingen, rechtsonder.</p>
+          <p>Let op! Gebruik de naam en het emailadres van wie de agenda is. Wil je bijvoorbeeld samen de
+          agenda van je moeder beheren, maak dan de agenda aan met het eimailadres van je moeder. Vanuit
+          haar agenda kan je jezelf en anderen uitnodigen.</p>
+        </div>
+        <div class="modal-body" ng-hide="user.isTempAccount==1">
+          <p>Welkom bij de MiessAgenda. Een handige APP om samen een agenda te beheren. Belangrijk icoon in
+            deze APP is de + rechtsboven. Hiermee kan je activiteiten invoeren in de agenda en nieuwe berichten
+            maken.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="pull-left" ng-click="hideIntro()" data-dismiss="modal"><input type="checkbox"> niet meer laten zien</a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Sluiten</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

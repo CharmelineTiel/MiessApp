@@ -1,0 +1,199 @@
+<form ng-submit="newAgenda()"
+      name="newAgenda"
+      id="newAgenda">
+<div class="col-xs-10 col-xs-offset-1">
+  <div class="row wizard">
+    <div class="col-sm-7 col-sm-push-1">
+      <h2>Aanmaken van een nieuwe MiessAgenda</h2>
+      <div class="alert alert-warning" ng-show="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <div class="alert alert-info" ng-show="infoMessage">
+        {{ infoMessage }}
+      </div>
+      <!-- B -->
+      <div class="userTypeBPlain">
+        
+        <h3>Eigenaar van de agenda</h3>
+        <div class="theOwner">
+        
+            <div class="form-group inline" ng-class="{ 'has-error' : model.errors.name }" >
+              <input id="id-name"
+                     type="text"
+                     placeholder="Naam"
+                     ng-class="{ 'has-error' : model.errors.name }"
+                     ng-model="model.name"
+                     class="formBesides"/>
+              <p ng-show="model.errors.name"
+                 class="help-block">
+                {{ model.errors.name}}
+              </p>
+            </div>
+            <div class="form-group inline" ng-class="{ 'has-error' : model.errors.email }">
+                <input id="id-email"
+                       type="email"
+                       placeholder="Email adres"
+                       ng-model="model.email"
+                       ng-class="{ 'has-error' : model.errors.email }"
+                       class="formBesides" />
+                <p ng-show="model.errors.email"
+                   class="help-block">
+                    {{ model.errors.email}}
+                </p>
+            </div>
+            <div class="form-group inline" ng-class="{ 'has-error' : model.errors.password }" style="width: 162px;">
+                <input id="id-password"
+                       type="password"
+                       placeholder="Wachtwoord"
+                       ng-model="model.password"
+                       style="width: 162px;"
+                       ng-class="{ 'has-error' : model.errors.password }"
+                       class="formBesides"/>
+                <p ng-show="model.errors.password"
+                   class="help-block">
+                    {{ model.errors.password}}
+                </p>
+            </div>  
+            <button class="btn btn-primary"
+                    ng-click="validateNewAgenda()">
+                Verder
+            </button>   
+		</div>
+
+        <h5>Ik wil de volgende personen toegang tot deze agenda geven</h5>
+        
+        <div class="theFollower">
+        
+            <div class="form-group inline" ng-class="{ 'has-error' : model.errors.email1 }">
+              <input id="id-email1"
+                     type="text"
+                     placeholder="Email persoon 1"
+                     ng-model="model.email1"
+                     class="formBesides"  />
+              <p ng-show="model.errors.email1"
+                 class="help-block">
+                {{ model.errors.email1}}
+              </p>
+            </div>
+            <div class="form-group inline" ng-class="{ 'has-error' : model.errors.name1 }">
+              <input id="id-name1"
+                     type="text"
+                     placeholder="Naam persoon 1"
+                     ng-model="model.name1"
+                     class="formBesides"/>
+              <p ng-show="model.errors.name1"
+                 class="help-block">
+                {{ model.errors.name1}}
+              </p>
+             </div>
+             <div class="form-group inline" ng-class="{ 'has-error' : model.errors.group1 }">
+              <select class="formBesides"
+                      ng-model="model.group1"
+                     name="groep">
+                <option value="1">Familie</option>
+                <option value="2">Vrienden</option>
+                <option value="3">Verzorging</option>
+                <option value="99">Overige</option>
+              </select>
+               <p ng-show="model.errors.group1"
+                  class="help-block">
+                 {{ model.errors.group1}}
+               </p>
+            </div>     
+		</div>
+
+        <p class="betweenBoxes">(Optioneel)</p>
+        
+        <div class="theFollower">
+              
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.email2 }">
+                <input id="id-email2"
+                       type="text"
+                       placeholder="Email persoon 2"
+                       ng-model="model.email2"
+                       class="formBesides"  />
+                <p ng-show="model.errors.email2"
+                   class="help-block">
+                  {{ model.errors.email2}}
+                </p>
+              </div>
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.name2 }">
+                <input id="id-name2"
+                       type="text"
+                       placeholder="Naam persoon 2"
+                       ng-model="model.name2"
+                       class="formBesides"/>
+                <p ng-show="model.errors.name2"
+                   class="help-block">
+                  {{ model.errors.name2}}
+                </p>
+              </div>
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.group2 }">
+                <select class="formBesides"
+                        ng-model="model.group2"
+                        name="groep">
+                  <option value="1">Familie</option>
+                  <option value="2">Vrienden</option>
+                  <option value="3">Verzorging</option>
+                  <option value="99">Overige</option>
+                </select>
+                <p ng-show="model.errors.group2"
+                   class="help-block">
+                  {{ model.errors.group2}}
+                </p>
+              </div>          
+       		  <p></p>
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.email3 }">
+                <input id="id-email3"
+                       type="text"
+                       placeholder="Email persoon 3"
+                       ng-model="model.email3"
+                       class="formBesides"  />
+                <p ng-show="model.errors.email3"
+                   class="help-block">
+                  {{ model.errors.email3}}
+                </p>
+              </div>
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.name3 }">
+                <input id="id-name3"
+                       type="text"
+                       placeholder="Naam persoon 3"
+                       ng-model="model.name3"
+                       class="formBesides"/>
+                <p ng-show="model.errors.name3"
+                   class="help-block">
+                  {{ model.errors.name3}}
+                </p>
+              </div>
+              <div class="form-group inline" ng-class="{ 'has-error' : model.errors.group3 }">
+                <select class="formBesides"
+                        ng-model="model.group3"
+                        name="groep">
+                  <option value="1">Familie</option>
+                  <option value="2">Vrienden</option>
+                  <option value="3">Verzorging</option>
+                  <option value="99">Overige</option>
+                </select>
+                <p ng-show="model.errors.group3"
+                   class="help-block">
+                  {{ model.errors.group3}}
+                </p>
+              </div>
+    
+            </div>
+            
+        <p class="betweenBoxes">Nadat de agenda is aangemaakt, kan je meer mensen uitnodigen.</p>
+  
+      </div>
+      <!-- B --> 
+    </div>
+    <div class="col-sm-3 col-sm-push-1">
+      <div class="drawline always">
+        <h2><!-- geen titel -->&nbsp;</h2>
+        <h4>Je kunt voor jezelf of voor iemand anders een agenda maken</h4>
+        <p><strong>Let op!</strong> Vul het emailadres in voor wie de agenda is. Is de agenda voor jezelf vul dan je eigen emailadres in. Is de agenda voor iemand anders, bijvoorbeeld voor je vader of moeder, gebruik dan zijn of haar emailadres. Vanuit deze agenda nodig je jezelf en andere familieleden of buren en vrienden uit.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

@@ -1,0 +1,97 @@
+
+<!-- 
+	show the message system 
+-->
+
+<form name="shareForm" role="form" class="share">
+	<div id="id-message" class="container-fluid" ng-controller="ShareController">
+		<header class="bar bar-nav row">
+			<div class="col-xs-4 col-sm-3">
+				<span class="btn" ng-hide="formState=='view' || formState=='none'" ng-click="cancel()">annuleer</span>
+			</div>	
+			<div class="col-sm-9">
+				<button class="btn pull-right"
+                ng-click="add()"
+                ng-show="agenda.isAdmin==1 && (formState == 'view' || formState=='none' || formState=='clear')">
+					<span class="hidden-xs">nieuw </span><span class="glyphicon glyphicon-plus"></span>
+				</button>						
+				<button class="btn pull-right"
+                ng-click="edit()"
+                ng-show="agenda.isAdmin==1 && (formState == 'view')">
+					<span class="hidden-xs">wijzig </span><span class="glyphicon glyphicon-pencil"></span>
+				</button>						
+				<button class="btn pull-right"
+                ng-click="send()"
+                ng-show="agenda.isAdmin && (formState=='add' || formState=='invite')">
+					<span class="hidden-xs">verstuur</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
+				</button>		
+				<button class="btn pull-right"
+                ng-click="save()"
+                ng-show="agenda.isAdmin==1 && (formState=='edit' || formState =='save')">
+					<span class="hidden-xs">bewaar</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
+				</button>		
+				<button class="btn pull-right"
+                ng-click="send()"
+                ng-show="agenda.isAdmin==1 && (formState=='edit' && model.isAccepted==0 && model.isBlocked==0)">
+					<span class="hidden-xs">opnieuw versturen</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
+				</button>						
+				
+			</div>			
+		</header>
+
+		<nav class="bar bar-tab"
+         style="top: {{ navTop() }}"
+         ng-include="'views/layouts/header.html'"></nav>
+		
+		<div class="content share">
+			<div class="col-sm-4 view-list share-list" ng-disabled="inEdit" ng-class="{'div-disabled' :inEdit}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">agenda deelnemers</h3>
+					</div>
+					<div class="panel-body">
+						<p>klik op een naam om de gegevens te bekijken of aan te passen.</p>
+					</div>
+				</div>	
+				<div class="list" 
+					 ng-class="{selected : $index == activeIndex}" 
+					 ng-repeat="share in list track by $index" 
+					 ng-click="inEdit || show($index)"
+           ng-show="share.isOwner==0 || agenda.isAdmin==0"
+					 >
+					<div id="id-share-{{ share.id}}" class="view-list-caption" >{{ share.name }}
+            <span class="pull-right badge ">
+              <span class="glyphicon glyphicon-time" ng-show="share.isAccepted==0 && share.isDenied==0"></span>
+              <span class="glyphicon glyphicon-ok" ng-show="share.isAccepted==1"></span>
+              <span class="glyphicon glyphicon-remove" ng-show="share.isDenied==1"></span>
+            </span>
+          </div>
+				</div>
+				<div class="list-end"></div>
+			</div>
+			<div class="col-sm-1">
+				<div class="share-icon"></div>
+			</div>
+			<div class="col-sm-6">
+				<div ng-show="formState=='view'">
+					<div ng-include="'views/share/view.html'"></div>				
+				</div>	
+				<div ng-show="formState=='edit' || formState=='add' || formState=='save'"> 
+					<div ng-include="'views/share/form.html'"></div>				
+				</div>	
+				<div ng-show="formState=='clear'">
+					<div ng-include="'views/share/info.html'"></div>				
+				</div>
+        <div ng-show="formState=='max'">
+          <div ng-include="'views/share/max.html'"></div>
+        </div>
+        <div ng-show="formState=='none'">
+
+				</div>	
+				
+			</div>			
+		</div>	
+	</div>	
+</form>	
+	
+	

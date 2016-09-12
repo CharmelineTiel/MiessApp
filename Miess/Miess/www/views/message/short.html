@@ -1,0 +1,29 @@
+<div ng-class="{active :message.id == model.id}">
+  <div class="short" ng-class="(message.isSender==1) ? 'sender' : 'receiver'"> <!-- fix the border -->
+    <div class="body">
+      <div class="unread" ng-show="message.isRead==1"></div>
+      <div class="msg-info">
+        <span ng-show="message.isPrivate == 1"	class="glyphicon glyphicon-lock" ></span>
+        <span ng-show="message.isInvitation==1" class="block header-{{message.activity.typeId}}">uitnodiging</span>
+        <span ng-show="message.isShare==1" class="concept">uitnodiging voor agenda</span>
+        <span ng-show="message.replyOn.id > 0" class=" concept reply-{{ message.activity.typeId}}">antwoord</span>
+        <span ng-show="message.isConcept==1" class="concept">concept</span>
+        <span	ng-show="message.sendDate  && message.isSender==1">verzonden</span> <!-- send by Me -->
+        <span class="date">{{ formatDate(message.sendDate) }}</span>
+      </div>
+
+      <div id="id-msg-{{ message.id}}"
+           class="msg-subject"
+           ng-class="{'msg-subject-unread': message.isRead==0}">{{ message.subject }}
+      </div>
+      <div  class="msg-info">
+        <div class="from" ng-hide="message.isSender"><span class="caption">van: </span>{{ message.sender.name }}</div>
+        <div class="to"		ng-show="message.isSender"><span class="caption">aan: </span>
+                        <span class="name" ng-repeat="recipient in message.recipients">
+                          {{ recipient.name }}<span ng-hide="$last">, </span>
+                        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

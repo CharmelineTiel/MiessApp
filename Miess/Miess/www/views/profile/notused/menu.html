@@ -1,0 +1,23 @@
+<!-- the possible options -->
+
+<div class="container" ng-controller="AgendaController">
+	<p class="lead">Uitleg wat hier te doen</p>
+	<hr class="half-rule">
+	<div class="row">
+		<div class="col-sm-4">
+			<img src="http://lorempixel.com/200/200/people/3/" ng-click="go('/profile/settings')"/>
+			<h3>Persoonlijke informatie</h3>
+			<p ng-click="go('/profile/settings')">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vel metus et rutrum. Quisque ac ultricies neque. Donec tempor dui et risus condimentum, et facilisis sapien molestie. Nullam rutrum eu lorem nec volutpat. Vestibulum laoreet tellus ligula, vitae laoreet dolor mollis non. Donec dolor nisi, suscipit in dolor at, posuere mollis arcu. Duis at urna enim. Pellentesque eleifend adipiscing metus et bibendum. </p>
+		</div>
+		<div class="col-sm-4" ng-click="go('/profile/invite')" ng-show="agenda.isAdmin">
+			<img src="http://lorempixel.com/200/200/people/2/" />
+			<h3>Uitnodigen voor deze agenda zien</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet vel metus et rutrum. Quisque ac ultricies neque. Donec tempor dui et risus condimentum, et facilisis sapien molestie. Nullam rutrum eu lorem nec volutpat. Vestibulum laoreet tellus ligula, vitae laoreet dolor mollis non. Donec dolor nisi, suscipit in dolor at, posuere mollis arcu. Duis at urna enim. Pellentesque eleifend adipiscing metus et bibendum. </p>
+		</div>
+		<div class="col-sm-4" ng-click="go('/profile/agendas')">
+			<img src="http://lorempixel.com/200/200/people/4/" />
+			<h3>Mijn agenda's</h3>
+			<p>De agenda's waar je een onderdeel van bent. Dat is inclusief je eigen agenda </p>
+		</div>
+	</div>
+ </div>

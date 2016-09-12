@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="AgendaApp">
+<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<!-- <metax name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+    <!--
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-density-dpi=mediumDpi, user-scalable=0" />
+		-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+  <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=0, width=device-width, height=device-height"/> -->
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="lib/jasny-bootstrap/css/jasny-bootstrap.min.css" />        
+		<link rel="stylesheet" href="lib/ratchet-master/dist/css/ratchet.css" />
+		<link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/final.css" />
+
+		<link rel='stylesheet' href='lib/fullcalendar/fullcalendar.css'  />
+		<link rel="stylesheet" href="css/extrastyle.css" />
+		<title>Miess Agenda</title>
+</head>
+<body ng-controller="ApplicationController">
+  <div ng-show="showWait==1"
+       class="waiting"><img src="images/loading4.gif"/>
+  </div>
+
+  <div ng-view>
+  </div>
+
+
+	<!-- system -->
+	<script type="text/javascript" src="js/util.js"></script>
+	
+	<!-- phonegap -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>	
+	
+	<!-- jquery -->
+	<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src='lib/jquery-ui/jquery-ui.custom.min.js'></script>
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/ratchet-master/dist/js/ratchet.js" ></script>
+	<!-- angular -->
+	<script type="text/javascript" src="lib/angular/angular.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-resource.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-animate.js"></script>
+  <script type="text/javascript" src="lib/angular/angular-touch.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-sanitize.js"></script>
+	<script type="text/javascript" src='lib/angular-strap/angular-strap.js'></script>
+	<script type="text/javascript" src='lib/angular-strap/angular-strap.tpl.js'></script>
+	
+	<script type="text/javascript" src="lib/angular/i18n/angular-locale_nl-nl.js"></script>
+
+	<script type="text/javascript" src='lib/calendar/calendar.js'></script>
+	<script type="text/javascript" src='lib/fullcalendar/fullcalendar.js'></script>
+	<script type="text/javascript" src='lib/moment/moment-with-langs.js'></script>
+	<script type="text/javascript" src='lib/angular-elastic/elastic.js'></script>
+	<script type="text/javascript" src='lib/infinity-scroll/lrInfiniteScroll.js'></script>
+	<script type="text/javascript" src='lib/modernizr/modernizr.js'></script>
+	
+
+	
+	<!-- application -->
+	<script type="text/javascript" src="js/app.js"></script>	
+	
+	<!-- turning on serverside debugging -->
+	<script type="text/javascript" src="lib/stacktrace/stacktrace.js"></script>
+	<script type="text/javascript" src="js/debug.js"></script>
+
+  <script type="text/javascript" src="lib/toxus/ios.js"></script>
+
+	<script type="text/javascript" src="js/services.js"></script>	
+	<script type="text/javascript" src="models/Activity.js"></script>
+	<script type="text/javascript" src="models/Profile.js"></script>	
+	<script type="text/javascript" src="models/Share.js"></script>	
+	<script type="text/javascript" src="models/Agenda.js"></script>	
+	<script type="text/javascript" src="models/Message.js"></script>	
+	<script type="text/javascript" src="models/Information.js"></script>	
+	<script type="text/javascript" src="controllers/ApplicationController.js"></script>
+	<script type="text/javascript" src="controllers/FormController.js"></script>
+	<script type="text/javascript" src="controllers/AgendaController.js"></script>
+	<script type="text/javascript" src="controllers/CalendarController.js"></script>
+	<script type="text/javascript" src="controllers/ActivityController.js"></script>
+	<script type="text/javascript" src="controllers/ProfileController.js"></script>
+	<script type="text/javascript" src="controllers/ShareController.js"></script>
+	<script type="text/javascript" src="controllers/MessageController.js"></script>
+	<script type="text/javascript" src="controllers/TestController.js"></script>
+	<script type="text/javascript" src="controllers/InfoController.js"></script>
+	<script type="text/javascript" src="controllers/ActiveShareController.js"></script>
+  <script type="text/javascript" src="controllers/WizardController.js"></script>
+		
+	
+	<!-- jquery plugins -->
+	<script type="text/javascript" src="lib/jquery-elastic/jquery.elastic.source.js"></script>
+
+	<!-- services -->
+	<script type="text/javascript" src='lib/angular-flash/angular-flash.min.js'></script>
+
+</body>
+</html>

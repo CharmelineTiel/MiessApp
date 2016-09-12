@@ -1,0 +1,86 @@
+<!--
+	List the recipients as form or as message
+-->
+
+
+<div class="recipient-list" ng-show="formState=='view'">
+	<h2 ng-show="model.recipients.length > 0">ontvangers</h2>
+	<div class="invitation" ng-show="model.activity">
+    <h3 >uitgenodigd zijn</h3>
+		<div class="user" ng-repeat="user in model.recipients | filter: {isAccepted:1}">
+			<h3 ng-show="$first">geaccepteerd</h3>
+			<div class="name" >
+				{{ user.name }}
+			</div>
+		</div>
+		<div class="user" ng-repeat="user in model.recipients | filter: {isDenied:1}">
+			<h3 ng-show="$first">afgewezen</h3>
+			<div class="name" >
+				{{ user.name }}
+			</div>
+		</div>
+		<div class="user" ng-repeat="user in model.recipients | filter: {isUnknown:1}">
+			<h3 ng-show="$first">nog onbekend</h3>
+			<div class="name" >
+				{{ user.name }}
+			</div>
+		</div>
+		<hr />
+	</div>
+	<div class="read" ng-show="model.recipients.length > 0">
+
+		<div class="user" ng-repeat="user in model.recipients | filter: {isRead:1}">
+			<h3 ng-show="$first">gelezen</h3>
+			<div class="name" >								
+				{{ user.name }}		
+			</div>		
+		</div>	
+		<div class="user" ng-repeat="user in model.recipients | filter: {isRead:0}">
+			<h3 ng-show="$first">niet gelezen</h3>
+			<div class="name" >								
+				{{ user.name }}		
+			</div>		
+		</div>	
+		
+	</div>
+</div>
+
+<div class="recipient-list" ng-show="formState==='add' || formState==='edit'">
+	<h2>versturen</h2>
+	<div class="name" ng-click='toClick(owner.id)'>				
+		<span ng-show="model.recipientIds.indexOf(owner.id) >= 0" class="id-user-{{owner.id}} glyphicon glyphicon-ok-circle color-accept"></span>
+		{{ owner.name}} 
+	</div>
+	<div class="user" ng-repeat="group in groups track by $index">
+		<h3 ng-show="$first">groepen</h3>
+		<div class="name" ng-click='toClickGroup($index)'>				
+			<span class="id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept" style="display:none"></span>
+			{{ group.caption}}		
+		</div>
+	</div>	
+	<div class="user" ng-repeat="user in userList">
+		<h3 ng-show="$first">personen</h3>
+		<div class="name" ng-click='toClick(user.id)'>				
+			<span ng-show="model.recipientIds.indexOf(user.id) >= 0" class="id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept"></span>
+			{{ user.name}} 
+		</div>
+	</div>	
+</div>
+
+
+<div class="panel panel-default msg-recipients" ng-show="formState==='addXX' || formState==='editXX'">
+	<div class="panel-heading">
+		versturen aan
+	</div>
+	<div class="panel-body">
+		<div class='msg-group' ng-repeat="grp in userList">
+			<div class="group-name" ng-hide="$first">{{ grp.name }}</div>
+			<div ng-repeat="user in grp.members">
+				<div class="name" ng-click='toClick(user.id)'>				
+					<span class="id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept" style="display:none"></span>
+					{{ user.name}}
+				</div>
+			</div>		
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,91 @@
+<!-- page show when user is logged in by a true account -->
+<!-- show the current user profile or link to an account -->
+
+
+<div class="container" ng-controller="ProfileController">
+	<form  novalidate>	
+	<div ng-include="'views/layouts/header.html'"></div>	
+	<div class="row clearfix">
+		<div class="col-sm-4 col-sm-push-2">
+			<h1 class="miess_pagetitle" >Profiel</h1>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-4 col-sm-push-2">
+			<div class="form-group toolbar msg-toolbar">
+				<div class="btn-group ">
+					<button ng-click="updateProfile()">Bewaar</button>
+				</div>
+			</div>	
+		</div>	
+		</div>	
+	
+	<div class="row clearfix" ng-show="errorMessage">
+		<div class="col-sm-8 col-sm-push-2 alert alert-warning">
+			{{ errorMessage }}
+		</div>
+	</div>	
+	<div class="row clearfix" ng-show="infoMessage">
+		<div class="col-sm-8 col-sm-push-2 alert alert-success">
+			{{ infoMessage }}
+		</div>
+	</div>	
+	
+	<div class="row clearfix">
+		<div class="col-xs-12 col-sm-4 col-sm-push-2">
+			<div class="form-group" ng-class="{ 'has-error' : newProfile.errors.username }">
+				<label for="inputEmail">Naam</label>
+				<input type="text" class="form-control" ng-model="model.username" placeholder="Naam" required>
+				<p ng-show="newProfile.errors.username" class="help-block">{{ newProfile.errors.username}}</p> 
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : newProfile.errors.email }">
+				<label for="inputEmail">E-mail adres</label>
+				<input type="text" class="form-control" ng-model="model.email" placeholder="E-mail adres" required>
+				<p ng-show="newProfile.errors.email" class="help-block">{{ newProfile.errors.email}}</p> 
+			</div>
+			<div class="form-group">
+				<a href="#" class="btn btn-primary btn-sm">Wijzig wachtwoord</a>
+				<input type="hidden" ng-model="model.password" name="password" />
+			</div>
+			<h3>publiek</h3>
+			<div class="form-group">
+				<label for="inputEmail">Telefoon</label>
+				<input type="text" class="form-control" ng-model="model.telephone_public" placeholder="Telefoon">
+			</div>
+			<div class="form-group">
+				<label for="inputEmail">email</label>
+				<input type="text" class="form-control" ng-model="model.email_public" placeholder="Mobiel">
+			</div>
+			
+			<h3>Prive</h3>
+			<div class="form-group">
+				<label for="inputEmail">Telefoon</label>
+				<input type="text" class="form-control" ng-model="model.telephone" placeholder="Telefoon">
+			</div>
+		
+		</div>
+		<div class="col-xs-12 col-sm-4 col-sm-push-2 miess_bg1">
+			<div class="drawline">
+				<h3>Mijn agenda gegevens</h3>
+				<div class="form-group">
+					<label for="inputTitle">Agenda titel</label>
+					<input type="text" class="form-control" ng-model="model.agendaTitle" placeholder="De naam van de agenda">
+				</div>				
+				
+				<h3>Contact gegevens</h3>
+				<div class="form-group">
+					<label for="inputStreet">Straat</label>
+					<input type="text" class="form-control" ng-model="model.street" placeholder="Straat en huisnummer">
+				</div>
+				<div class="form-group">
+					<label for="inputCity">Postcode/plaats</label>
+					<input type="text" class="form-control col-sm-4" ng-model="model.zipcode" placeholder="Postcode">
+					<input type="text" class="form-control" ng-model="model.city" placeholder="Plaats">
+				</div>
+				<div ng-include="'help/profileExplain.html'"></div> 				
+			</div>
+		</div>	
+	</div>
+	</form>
+	<div ng-include="'views/profile/systemInfo.html'" ></div>
+</div>

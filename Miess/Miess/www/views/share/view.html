@@ -1,0 +1,45 @@
+<!--
+ show the content a share
+-->
+<div class="row view">
+	<h2>Agenda deelnemer</h2>	
+	
+	<div class="view-label">naam</div>
+	<div class="share-field">{{ model.name }}</div>
+	
+	<div class="view-label">email</div>
+	<div class="share-field">{{ model.publicEmail }}</div>
+  <div class="share-field" ng-show="agenda.isAdmin && model.publicEmail != model.email"><i>(privé: {{ model.email }} </i></div>
+  <div ng-show="model.publicTelephone.length">
+    <div class="view-label">telefoon</div>
+    <div class="share-field">{{ model.publicTelephone }}</div>
+  </div>
+
+	<div class="view-label">actief in de agenda</div>
+	<div class="share-field" ng-show="model.isAccepted==1">Ja</div>
+	<div class="share-field" ng-show="model.isDenied==1">Nee</div>
+	<div class="share-field" ng-show="model.isDenied==0 && model.isAccepted==0">De uitnodiging staat nog open</div>
+
+  <div ng-show="agenda.isAdmin">
+	  <div class="view-label" ng-show="model.inviteMessage">uitnodigingsbericht</div>
+	  <div class="share-field" ng-bind-html="model.inviteMessage |nl2br"></div>
+  </div>
+
+	<div class="view-label">gebruikersgroep</div>
+	<div class="share-field">{{ model.groupName }}</div>
+
+  <div ng-show="agenda.isAdmin==1">
+    <div ng-show="model.isBlocked==1">
+      <div class="view-label">toegang</div>
+      <div class="share-field">Deze gebruiker kan <b>geen</b> gebruik van de agenda maken.</div>
+    </div>
+    <div ng-show="model.isWritable==1">
+      <div class="view-label">wijzigen van de gegevens</div>
+      <div class="share-field">Deze gebruiker kan afspraken toevoegen en wijzigen.</div>
+    </div>
+    <div ng-show="model.isAdmin==1">
+      <div class="view-label">onderhoud aan de agenda</div>
+      <div class="share-field">Deze gebruiker kan de agenda en gebruikers beheren.</div>
+    </div>
+  </div>
+</div>

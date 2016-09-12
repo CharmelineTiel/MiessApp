@@ -1,0 +1,60 @@
+<!--
+  Agenda definition
+-->
+<div id="id-agenda" ng-controller="AgendaController">
+
+    <header id="id-header" class="bar bar-nav row">
+        <div class="col-xs-4">
+            <button class="btn" ng-click="goBack()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                &nbsp; Terug
+            </button>
+        </div>
+    </header>
+    <nav id="id-nav"
+         style="top: {{ navTop() }}"
+         class="bar bar-tab"
+         ng-hide="keyboardShown"
+         ng-include="'views/layouts/header.html'">
+    </nav>
+
+    <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()">
+        <div class="activity-view"  ng-controller="ActivityController">
+            <div class="act-info panel-group" ng-click="edit();">
+                <div class="panel panel-default border-{{model.typeId}}">
+                    <div class="panel-heading heading-{{model.typeId}}">
+                        {{ model.typeText }}
+                    </div>
+                    <div class="panel-body activity-color-{{ model.typeId }}">
+                        <div class="act-label" style="position:relative;height: 29px;">
+                            <span class="btn btn-default pull-right">Bewerken</span>
+                            <div style="position: absolute; bottom: 0; left: 0;">Tijd</div>
+                        </div>
+                        <div class="period">{{ model.period }}</div>
+                        <div class="act-label">activiteit</div>
+                        <div class="subject">{{ model.title }} </div>
+                        <!--<div class="act-label" ng-show="model.description">beschrijving</div>-->
+                        <!--<div class="subject" ng-bind-html="model.description |nl2br"></div>-->
+                        <div class="view-list" ng-show="model.invitation">
+                            <hr />
+                            <h3>uitnodigingen</h3>
+                            <div class="summery" ng-repeat="recipient in model.recipients | filter: {isAccepted:1}">
+                                <div class="act-label" ng-show="$first">geaccepteerd</div>
+                                <span class="subject">{{ recipient.name }}</span><span ng-hide="$last">, </span>
+                            </div>
+                            <div class="summery" ng-repeat="recipient in model.recipients | filter: {isUnknown:1}">
+                                <div class="act-label" ng-show="$first">geen reactie ontvangen</div>
+                                <span class="subject">{{ recipient.name }}</span><span ng-hide="$last">, </span>
+                            </div>
+                            <div class="summery" ng-repeat="recipient in model.recipients | filter: {isDenied:1}">
+                                <div class="act-label" ng-show="$first">niet geaccepteerd</div>
+                                <span class="subject">{{ recipient.name }}</span><span ng-hide="$last">, </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

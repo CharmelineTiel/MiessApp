@@ -1,0 +1,75 @@
+
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="row">
+      <div class="col-sm-5 col-sm-push-1">
+      
+        <h2>Meekijken in agenda</h2>
+        <div class="alert alert-warning" ng-show="errorMessage">
+          {{ errorMessage }}
+        </div>
+        <div class="alert alert-info" ng-show="infoMessage">
+          {{ infoMessage }}
+        </div>
+
+        <div class="userTypeAPlain">
+		  <h3>Naam, emailadres en wachtwoord</h3>	          
+          <div class="theViewer">
+          <form novalidate>
+            <div class="form-group inline" ng-class="{ 'has-error' : newProfile.errors.username }">
+              <!--<label class="control-label" for="inputNaam">Je naam</label>-->
+              <input type="text"
+                     class="form-control formBesides"
+                     id="inputNaam"
+                     ng-model="newProfile.username"
+                     placeholder="Naam" >
+              <p ng-show="newProfile.errors.username" class="help-block">{{ newProfile.errors.username}}</p>
+            </div>
+            <div class="form-group inline" ng-class="{ 'has-error' : newProfile.errors.email }">
+              <!--<label class="control-label" for="inputEmail">Email</label>-->
+              <input type="email"
+                     class="form-control formBesides"
+                     id="inputEmail"
+                     ng-model="newProfile.email"
+                     placeholder="Emailadres" >
+              <p ng-show="newProfile.errors.email" class="help-block">{{ newProfile.errors.email}}</p>
+
+            </div>
+
+            <div class="form-group inline" ng-class="{ 'has-error' : newProfile.errors.password }">
+              <!--<label class="control-label" for="inputPassword">Kies je wachtwoord</label>-->
+              <input type="password"
+                     id="inputPassword"
+                     class="form-control formBesides"
+                     ng-model="newProfile.password"
+                     placeholder="Wachtwoord"  >
+                <p ng-show="newProfile.errors.password"
+                   class="help-block">
+                    {{ newProfile.errors.password}}
+                </p>
+                <button class="btn btn-primary"
+                        ng-click="searchAgenda()">
+                    Agenda(s) ophalen
+                </button>
+            </div>
+          </form>
+          </div>
+
+          <p><!-- mogelijke reacties --></p>
+          <p class="resultFeedback" ng-show="profileState=='ok'"><img src="images/found.png" class="resultIcon" />MiessAgenda gevonden</p>
+          <p class="resultFeedback" ng-show="profileState=='error'"><img src="images/not-found.png" class="resultIcon" />Controleer het emailadres</p>
+        </div>
+      </div>
+      <div class="col-sm-5 col-sm-push-1">
+        <div class="drawline always" style="border-color:#179103;">
+          <h2><!-- geen titel -->&nbsp;</h2>
+          <p>Vul je eigen gegevens in. Kies een gebruikersnaam en een wachtwoord voor je account van de MiessAgenda.</p>
+          <p>Klik op Agenda zoeken. De MiessAgenda vindt jouw uitnodiging op basis van je emailadres en koppelt je direct aan de juiste agenda.</p>
+          <p>Je kunt dan meekijken in de agenda, afspraken er in zetten, berichten versturen. Wanneer je hiertoe door de eigenaar gemachtigd bent, kan je ook anderen uitnodigen om deel te nemen aan deze agenda.</p>
+          <p><strong>Let op!</strong> Met het aanmaken van de MiessAgenda ga je akkoord met de algemene voorwaarden en het privacy statement. Zie de website miessagenda.nl.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+

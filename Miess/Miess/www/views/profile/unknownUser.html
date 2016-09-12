@@ -1,0 +1,62 @@
+
+<!-- show the current user profile or link to an account -->
+
+	<div class="row clearfix" ng-show="errorMessage">
+		<div class="col-sm-8 col-sm-push-2 alert alert-warning">
+			{{ errorMessage }}
+		</div>
+	</div>	
+<div class="row">
+	<!-- page shown when user is a temporary user -->
+	<div class="col-sm-4 col-sm-push-2">
+		<h3>Bestaande gebruiker</h3>
+		<div ng-include="'help/profileExistingExplain.html'"></div> 				
+		<form  form-autofill-fix>
+			<div class="form-group" ng-class="{ 'has-error' : existingProfile.errors.username && !existingProfile.username.$pristine }">
+				<label for="inputEmail">E-mail adres</label>
+				<input type="text" class="form-control" id="inputEmail" ng-model="existingProfile.username" placeholder="E-mail adres" >
+				<p ng-show="existingProfile.errors.username" class="help-block">{{ existingProfile.errors.username }}</p> 				
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : existingProfile.errors.password && !existingProfile.password.$pristine }">
+				<label for="inputPassword">Wachtwoord</label>
+				<input type="password" ng-hide="showExistingPassword" class="form-control" id="inputPassword"  ng-model="existingProfile.password" placeholder="Wachtwoord" >
+				<input type="text" ng-show="showExistingPassword" class="form-control" id="inputPassword"  ng-model="existingProfile.password" placeholder="Wachtwoord" >
+				<p ng-show="existingProfile.errors.password" class="help-block">{{ existingProfile.errors.password }}</p> 				
+			</div>
+			<div class="form-group">
+				<input type="checkbox" ng-model="showExistingPassword" value="1"> Wachtwoord laten zien
+			</div>
+
+			<button type="submit" class="btn btn-primary" ng-click="existingUser()">Inloggen</button>
+		</form>
+		<p>&nbsp;</p>
+		<p>Wachtwoord vergeten? <a href="#">Klik hier.</a></p>
+	</div>
+	<div class="col-sm-4 col-sm-push-2 miess_bg1">
+		<div class="drawline">
+		<h3>Nieuwe gebruiker</h3>
+		<div ng-include="'help/profileNewExplain.html'"></div> 				
+		<form ng-submit="newUser()" novalidate>
+			<div class="form-group" ng-class="{ 'has-error' : newProfile.errors.username }">
+				<input type="text" class="form-control" id="inputNaam" ng-model="newProfile.username" placeholder="Naam" >
+				<p ng-show="newProfile.errors.username" class="help-block">{{ newProfile.errors.username}}</p> 
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : newProfile.errors.email }">
+				<input type="text" class="form-control" id="inputEmail" ng-model="newProfile.email" placeholder="E-mail adres" >
+				<p ng-show="newProfile.errors.email" class="help-block">{{ newProfile.errors.email}}</p> 
+			</div>
+
+			<div class="form-group" ng-class="{ 'has-error' : newProfile.errors.password }">
+				<input type="password" ng-hide="showPassword"class="form-control" id="inputPassword"  ng-model="newProfile.password" placeholder="Wachtwoord"  >
+				<input type="text" ng-show="showPassword"class="form-control" id="inputPassword"  ng-model="newProfile.password" placeholder="Wachtwoord"  >
+				<p ng-show="newProfile.errors.password" class="help-block">{{ newProfile.errors.password}}</p> 
+			</div>
+			<div class="form-group">
+				<input type="checkbox" ng-model="showPassword" value="1"> Wachtwoord laten zien
+			</div>
+
+			<button type="submit" class="btn btn-primary">Maak nieuwe agenda</button>
+		</form>
+		</div>
+	</div>
+</div>	

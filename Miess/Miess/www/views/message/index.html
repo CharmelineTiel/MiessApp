@@ -1,0 +1,132 @@
+<!-- 
+	show the message system 
+-->
+
+<form name="msgForm" role="form" class="message">
+	<div id="id-message" class="container-fluid" ng-controller="MessageController">
+		<header id="id-header"  class="bar bar-nav row">
+			<div class="col-xs-5 col-sm-4">
+				<!-- above the search -->				
+				<div class="msg-filter">
+					<div class="input-group">
+						<input type="text"
+                   name="filter"
+                   class="form-control"
+                   ng-model="searchFilter.word"
+                   ng-change="search()"
+                   placeholder="filter berichten">
+						<span ng-hide="1" class="input-group-addon hidden-xs glyphicon glyphicon-search" ng-click="search()">
+						</span>
+					</div>						
+				</div>			
+			</div>	
+			<div class="col-xs-5 col-sm-5"> <!-- above the reset -->
+				<button class="btn"
+                ng-click="remove()"
+                ng-hide="formState=='none' || formState=='clear'">
+					<span class="hidden-xs">verwijderen </span><span class="glyphicon glyphicon-trash"></span>
+				</button>
+        <button class="btn"
+                ng-click="unread()"
+                ng-hide="formState=='none' || formState=='clear' || model.isRead==0 || model.isConcept==1 || model.isSender==1">
+          <span class="hidden-xs">ongelezen </span><span class="glyphicon glyphicon-star-empty"></span>
+        </button>
+
+
+        <button class="btn pull-right"
+                ng-click="answer()"
+                ng-hide="formState=='none' || formState=='clear'">
+					<span class="hidden-xs">reageer </span><span class="glyphicon glyphicon-retweet"></span>
+				</button>						
+			</div>
+			<div class="col-sm-3">
+				<button class="btn pull-right"
+                ng-click="add()">
+					<span class="hidden-xs">nieuw </span><span class="glyphicon glyphicon-plus"></span>
+				</button>						
+				<button class="btn pull-right"
+                ng-click="sendMessage()"
+                ng-show="formState=='edit' || formState=='add'">
+					<span class="hidden-xs">verstuur</span><span class="visible-xs"><span class="glyphicon glyphicon-"></span></span>
+				</button>		
+			</div>			
+		</header>
+
+		<nav id="id-nav"
+         style="top: {{ navTop() }}"
+         class="bar bar-tab"
+         ng-include="'views/layouts/header.html'">
+
+		</nav>
+		<div class="content">
+			<div >
+				<div class="col-xs-5 col-sm-4">
+					<div ng-show="newMessages.length > 0" class="msg-new msg-list">
+						<div ng-repeat="message in newMessages"
+                 class="msg-item"
+								 ng-click="showById(message.id)"
+                 ng-class="{'not-read': message.isRead==0}">
+              <div ng-include="'views/message/short.html'"></div>
+						</div>
+					</div>	
+					<div lr-infinite-scroll="nextPage" class="scroll-box msg-list">
+						<div ng-repeat="message in list track by $index"
+								 ng-click="show($index)"
+								 class="msg-item"
+                 ng-class="{'not-read': message.isRead==0}">
+              <div ng-include="'views/message/short.html'"></div>
+            </div>
+						<div ng-show="filter.busy" class="scroll-is-loading">Laden ...</div>
+					</div>
+				</div>
+				<!-- better to make a 'fake' form of it -->			
+
+				<div class="col-xs-7 col-sm-6">
+					<div class="alert alert-warning" ng-show="errorMessage">
+						{{ errorMessage }}
+					</div>
+					<div ng-include="'views/message/view.html'"
+               ng-show="formState=='view'"></div>
+					<div ng-include="'views/message/form.html'"
+               ng-show="formState=='edit' || formState=='add'"></div>
+					<div ng-include="'views/message/info.html'"
+               ng-show="formState=='clear'"></div>
+					<div ng-include="'views/message/recipients.html'"
+               class="visible-xs" ></div>
+				</div>
+				<div class="hidden-xs col-sm-2" >
+					<div ng-include="'views/message/recipients.html'"></div>				
+				</div>	
+			</div>
+		</div>
+
+
+    <div class="modal fade" id="confirmNoRecipients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Versturen bericht zonder ontvangers</h4>
+          </div>
+          <div class="modal-body">
+            <p>Dit bericht heeft geen ontvangers. De ontvangers kunnen rechts aangegeven worden door op de
+              naam te klikken.<br/>
+              Er kan gekozen worden om het bericht aan een groep te sturen. Alle leden van de groep
+              krijgen dan het bericht.
+            </p>
+            <p>Moet het bericht toch verstuurd/bewaard worden zonder ontvanger?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">annuleer</button>
+            <button type="button" class="btn btn-primary" ng-click="sendConfirmed()">verstuur</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	</div>
+</form>
+
+
+
+

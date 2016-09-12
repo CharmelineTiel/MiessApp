@@ -1,0 +1,43 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li ng-show="user.isTempAccount==0">
+					<a href='#/agenda' >Agenda</a>
+				</li>
+				<li ng-show="user.isTempAccount==0" >
+					<a href='#/message' >Berichten</a>
+				</li>				
+				<li  ng-show="agenda.isAdmin && user.isTempAccount==0">
+					<a ng-href='#/profile/invite'>Nodig uit</a>
+				</li>
+				<li>
+					<a href='#/agenda'>Hoe werkt het?</a>
+				</li>
+				<li ng-show="user.isTempAccount==0">
+					<a ng-href="#/profile/agendas">Kies agenda</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-center" ng-show="user.isTempAccount==0">
+				<li>
+					<a ng-href="#" data-toggle="modal" data-target="#selectAgenda"><b>{{ agenda.title }}</b></a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="wait-icon" ng-show="isWaiting"><img src="images/wait.gif"/></li>
+				<li ng-show="user.isTempAccount==0">
+					<a ng-href="#/profile/settings"><span class='glyphicon glyphicon-home'></span> {{ user.username }}</a>
+				</li>
+				<li  ng-show="user.isTempAccount">
+					<a ng-href="#/profile/new" ><span class='glyphicon glyphicon-home'></span> Aanmelden</a>
+				</li>
+				
+				<li>
+					<a href ng-click="messageAdd()"><span class='glyphicon glyphicon-plus-sign'></span> Nieuw</a>
+				</li>				
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="navbar-space"></div>

@@ -1,0 +1,24 @@
+<div class="row " ng-show="errorMessage">
+  <div class="col-sm-10 col-sm-push-1 alert alert-warning">
+    {{ errorMessage }}
+  </div>
+</div>
+<div class="row" ng-show="infoMessage">
+  <div class="col-sm-10 col-sm-push-1 alert alert-success">
+    {{ infoMessage }}
+  </div>
+</div>
+
+<div class="row view">
+
+  <h2>Afmelden</h2>
+  <div class="well">
+    <p>
+      Door op afmelden te klikken, log je uit. Met je emailadres en wachtwoord kan je opnieuw inloggen.
+    </p>
+    <p class="text-center">
+      <button class="btn btn-primary btn-lg" ng-click="logout()">Afmelden</button>
+    </p>
+  </div>
+
+</div>

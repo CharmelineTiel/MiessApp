@@ -1,0 +1,218 @@
+/**
+  stylesheet include last to make the final changes
+  version 1.0  JvK
+*/
+
+/* button effects */
+.colorTypeA {
+	color:#179103;
+	}
+	
+.colorTypeB {
+	color:#0095da;
+	}
+	
+.userTypeA {
+	border:1px solid #179103; 
+	border-radius:12px; 
+	padding:15px;
+	color:#179103;
+	min-height:103px;
+	transition: background-color 0.5s ease;
+	}
+	
+button.btn.btn-success.userTypeA {
+	border: 1px solid #179103;
+	border-radius: 6px;
+	padding: 12px;
+	color: #179103;
+	min-height: 20px;
+	font-weight: bold;
+	font-size: 14px;
+	transition: background-color 0.5s ease;
+}
+
+button.btn.btn-success.userTypeA:hover {
+	color:#FFF;
+	animation:ease-in-out;
+}
+	
+.userTypeA:hover {
+	color:#FFF;
+	background-color:#179103;
+	cursor:pointer;
+	animation:ease-in-out;
+	}
+
+.userTypeB {
+	border:1px solid #0095da; 
+	border-radius:12px; 
+	padding:15px;
+	color:#0095da;
+	min-height:103px;
+	transition: background-color 0.5s ease;
+	}
+	
+.userTypeB:hover {
+	border:1px solid #0095da; 
+	border-radius:12px; 
+	padding:15px;
+	color:#FFF;
+	background-color:#0095da;
+	cursor:pointer;
+	animation:ease-in-out;
+	}
+
+.userTypeA strong, .userTypeB strong{
+	font-size:17px;
+	}
+
+.userTypeAPlain h3 {
+	color: #179103!important;
+	font-size:18px;
+	}
+
+li.ng-scope {
+	list-style-image:url(../img/agenda-option-A.png);
+	padding: 15px;
+	border-radius: 12px;
+	background-color: #f1fcef;
+}
+
+.agendaOption > div {
+	padding:8px 0;
+	}
+
+.agendaOption > div > h4 {
+	font-size: 18px;
+	color: #333;
+	display: inline;
+	font-weight: bold;
+	}
+
+
+.agendaOption > div > strong, .agendaOption > div > span {
+	color:#333;
+	}
+	
+.userTypeA img, .userTypeB img{
+	float:right;
+	margin-left:15px;
+	}
+	
+.drawline.always {min-height:350px;}
+
+
+.userTypeAPlain h3, .userTypeBPlain h3 {
+	margin:8px 0 12px 0;
+	font-size:24px;
+	}
+	
+.userTypeAPlain h5, .userTypeBPlain h5 {
+	color:#777;
+	font-weight:bold;
+	font-size:15px;
+	margin:17px 0 12px 0;
+	}
+
+.theFollower {
+	padding:15px;
+	border-radius:12px;
+	background-color:#f3f3f3;
+}
+
+.theOwner {
+	padding:15px;
+	border-radius:12px;
+	background-color:#ddf4fe;
+}
+
+.theViewer {
+	padding:15px;
+	border-radius:12px;
+	background-color:#f1fcef;
+}
+
+p.betweenBoxes {
+	margin-top:15px; 
+	color:#777;
+	margin-bottom:6px;
+	}
+
+/* plain panels */
+
+.userTypeAPlain {
+	border:1px solid #179103; 
+	border-radius:12px; 
+	padding:15px;
+	}
+
+.userTypeBPlain {
+	border:1px solid #0095da; 
+	border-radius:12px; 
+	padding:15px;
+	}
+	
+.userTypeAButton {
+	border-radius:6px;
+	background-color:#179103;
+	color:#fff;
+	margin-top:12px;
+	padding:10px 8px;
+	border:1px solid #179103;
+	transition: background-color 0.5s ease;
+}
+
+
+
+.userTypeAButton:hover {
+	background-color:#fff;
+	color:#179103;
+	border:1px solid #179103;
+}
+
+.resultFeedback {
+	border-radius:12px; 
+	padding:6px;
+	background-color:#ededed;
+	font-size:12px;
+	}
+
+.resultIcon {
+	float:left;
+	margin-right:10px;
+	width:22px;
+	height:22px;
+	}
+
+.formBesides {max-width:200px; margin-right:12px;}
+
+select {
+	width: 100%;
+	color: #666;
+	height: 35px;
+	-webkit-appearance: none;
+	padding: 0 15px;
+	margin-bottom: 15px;
+	line-height: 21px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	outline: none;
+	background-image:url(../img/arrow-down-2.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	}
+
+
+.overviewName {
+	width:200px;
+
+}
+
+table.table.overviewDetails td{
+	/*background-color:#ededed;*/
+	border-color: transparent;
+	font-size:14px;
+}
+	

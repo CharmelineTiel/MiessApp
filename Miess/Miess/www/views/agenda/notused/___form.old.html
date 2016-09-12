@@ -1,0 +1,171 @@
+
+<div class="container" ng-controller="AgendaController">
+<form class="form-horizontal" ng-submit="update()">
+  <div class="row clearfix ">
+		<div ng-include="'views/layouts/header.html'"></div>	
+	</div>	
+	<div class="row clearfix">
+		<div class="col-lg-9 col-md-9 col-sm-12">
+			<div id="nocalendar">
+				<div ng-controller="ActivityController" class="row">
+					<div class="col-md-3">
+						<div class="aditionalExp">
+							<div ng-include="'help/activiteitAanmaken.html'"></div> 
+						</div>
+					</div>
+					<div class="col-md-9">
+						<h3 class="miess_act groep{{ model.type_id }}">
+							<div>
+								<ul class="nav nav-pills">
+									<li><a href="#">Toevoegen <span class="glyphicon glyphicon-plus"></span></a></li>
+									<li><a href="#" >Opslaan <span class="glyphicon glyphicon-ok"></span></a></li>
+									<li><a href="#">Verwijderen <span class="glyphicon glyphicon-remove"></span></a></li>
+								</ul>
+							</div>
+							{{ model.typeText }}&nbsp; </h3>
+						<div class="miess_act_under groep{{ model.type_id }}"></div>
+						<div class="panel panel-default miess_groep3">
+							<input type="submit" value="bewaren" />
+
+								<fieldset>
+									<div class="panel-body">
+
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="textinput">Activiteit</label>
+											<div class="col-md-7">
+												<input id="textinput" name="textinput" type="text" placeholder="Omschrijf kort de activiteit" class="form-control input-md" value="{{ model.title }}" >
+											</div>
+
+										</div>
+											{{ model.title }}
+										<!-- Textarea -->
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="Notitie">Omschrijving</label>
+											<div class="col-md-7">
+												<textarea class="form-control" id="Notitie" name="Notitie">{{ model.description }}</textarea>
+											</div>
+										</div>
+
+										<!-- datum -->
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="Notitie">Datum</label>
+											<div class="col-md-7">
+												<div class='input-group date' id='datetimepicker1'>
+													<input type='text' class="form-control" name="start_date" ng-model="model.start_date" />
+													<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span> </div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="hele-dag">Duurt hele dag</label>
+											<div class="col-md-4">
+												<input type="radio" ng-model="model.is_all_day" value="1">&nbsp;ja
+												<input type="radio" ng-model="model.is_all_day" value="0">&nbsp;nee 		
+{{ model.is_all_day }}												
+<input type="radio" ng-model="color" value="red"> Red <br/>
+<input type="radio" ng-model="color" value="blue"> Blue <br/>		
+{{ color }}
+											</div>
+										</div>
+										<div class="reply" ng-hide="model.is_all_day=0"> 
+											<!-- tijd -->
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="Notitie">Begin tijd</label>
+												<div class="col-md-7">
+													<div class='input-group date' id='datetimepicker4'>
+														<input type='text' class="form-control" ng-model="model.start_time"/>
+														<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span> </span> </div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="Notitie">Eind tijd</label>
+												<div class="col-md-7">
+													<div class='input-group date' id='datetimepicker4'>
+														<input type='text' class="form-control" />
+														<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span> </span> </div>
+												</div>
+											</div>
+
+											<!-- einde fold --> 
+										</div>
+
+										<!-- Text input-->
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="Waar">Locatie</label>
+											<div class="col-md-7">
+												<input id="Waar" name="Waar" type="text" placeholder="waar is de activiteit" class="form-control input-md">
+											</div>
+										</div>
+
+										<!--- iemand mee ?? --> 
+
+										<!-- Multiple Checkboxes (inline) -->
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="Imand mee">Gaat iemand mee</label>
+											<div class="col-md-4">
+												<label class="checkbox-inline" for="Iemand mee">
+													<input type="checkbox" name="0" id="0" value="ja" class="iemand_mee" data-toggle="modal" data-target="#myModal">
+													ja </label>
+												&nbsp;&nbsp;
+												<label class="checkbox-inline" for="Iemand mee">
+													<input type="checkbox" name="1" id="1" value="nee"  >
+													nee </label>
+											</div>
+										</div>
+										<div class="iemand" style="display:none;"> 
+											<!-- fold --> 
+
+											<!-- tijd -->
+											<div class="form-group">
+												<label class="col-md-4 control-label" for="Notitie">Kies iemand</label>
+												<div class="col-md-7">
+													<select id="groep" name="groep" class="form-control">
+														<option value="1">Bas de Haan</option>
+														<option value="2">Bert van Wijk</option>
+														<option value="2">Coby Lits</option>
+														<option value="1">Marjan, Zorgflat Eiekenrode</option>
+														<option value="2">Otto van Wijk</option>
+														<option value="2">Peter van Wijk</option>
+														<option value="1">Remco en Arjan</option>
+														<option value="2">Simon de Winter</option>
+														<option value="2">Zorgcentrum Hoogvliet</option>
+													</select>
+													<p></p>
+													<select id="groep" name="groep" class="form-control">
+														<option value="Familie en vrienden">Groepen</option>
+														<option value="Familie">Familie</option>
+														<option value="Zorgverleners">Zorgverleners</option>
+													</select>
+												</div>
+											</div>
+
+											<!-- einde fold --> 
+										</div>
+
+										<!-- einde iemand mee --> 
+
+										<!-- Textarea -->
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="bijzonderheden">Bijzonderheden</label>
+											<div class="col-md-7">
+												<textarea class="form-control" id="bijzonderheden" name="bijzonderheden">noteer hier eventuele bijzonderheden</textarea>
+											</div>
+										</div>
+										<!-- <div class="form-group">
+											<div class="col-md-4 control-label">
+												<button type="submit" class="btn btn-groep4">Voeg toe aan agenda</button>
+											</div>
+											<div class="col-md-7"> </div>
+										</div> --> 
+									</div>
+									<!-- spacing -->
+								</fieldset>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+							</form>									
+</div>

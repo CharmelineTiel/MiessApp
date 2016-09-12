@@ -1,0 +1,87 @@
+<div class="activity"  ng-controller="ActivityController">
+	<form name="activityForm" ng-submit="update()">
+		<fieldset>         
+			<header id="id-header" class="bar bar-nav header-{{model.typeId}} row">
+				<div class="col-xs-7">
+				<span class="btn pull-left" ng-click="cancel()" ng-show="agenda.isWritable==1 || showMessage ==1">
+					annuleer
+				</span>
+				<span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1" class="btn pull-right" ng-click="del()">
+					verwijder <span class="glyphicon glyphicon-remove"></span>
+				</span>				
+
+				</div>	
+				<div class="col-xs-5">
+          <span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1"
+                class="btn pull-right"
+                ng-click="update()">
+            opslaan
+          </span>
+
+          <span ng-show="(formState=='invite') && agenda.isWritable==1 && model.inviteIds"
+                class="btn pull-right"
+                ng-click="model.resendInvitation=1; update()">
+            opslaan &amp; uitnodigen&nbsp;<span class="glyphicon glyphicon-plus"></span>
+          </span>
+
+          <span ng-show="(formState=='edit' && model.inviteIsSend==1) && agenda.isWritable==1"
+                class="btn pull-right"
+                ng-click="formState='invite';">
+            uitnodigen
+          </span>
+          <span ng-show="0 && (formState=='edit' && model.inviteIsSend==1) && agenda.isWritable==1"
+                class="btn pull-right"
+                ng-click="editInvite()">
+            herinnering
+          </span>
+          <span ng-show="0 && formState=='edit' && showMessage==0"
+                class="btn pull-right"
+                ng-click="addMessage()">
+            bericht
+          </span>
+        </div>
+			</header>
+			
+			<nav id="id-nav"
+           style="top: {{ navTop() }}"
+           class="bar bar-tab nav-bar"
+           ng-include="'views/layouts/header.html'">
+
+			</nav>	
+
+			<div class="col-xs-12 content">	 
+				<div class="row activity">						
+					<div ng-show="agenda.isWritable==1"
+               ng-include="'views/activity/form.html'">
+          </div>
+          <div ng-hide="agenda.isWritable==1"
+               ng-include="'views/activity/view.html'">
+          </div>
+					<div class="col-sm-5  col-xs-12">
+            <div class="invite-block"
+                 ng-include="'views/activity/message.html'"
+                 ng-show="showMessage==1">
+            </div>
+            <div class="invite-block"
+                 ng-include="'views/activity/otherAgenda.html'"
+                 ng-show="model.masterActivity.id > 0">
+            </div>
+						<div class="invite-block"
+                 ng-include="'views/activity/inviteForm.html'"
+                 ng-show="userList.length > 0 && formState=='invite' && ! model.masterActivity">
+            </div>
+						<div class="invite-block"
+                 ng-include="'views/activity/inviteView.html'"
+                 ng-show="userList.length > 0 && formState=='edit' && ! model.masterActivity">
+              >
+            </div>
+            <div class="invite-block"
+                 ng-include="'views/activity/inviteHelp.html' "
+                 ng-show="userList.length == 0 && ! model.masterActivity">
+            </div>
+					</div>
+				</div>
+			</div>	
+		</fieldset>			
+	</form>		
+</div>

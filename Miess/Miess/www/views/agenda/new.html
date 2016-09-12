@@ -1,0 +1,13 @@
+<!--
+defines the activity to be used
+-->
+
+<div class="activity-panel">
+	<div ng-repeat="type in activityTypes"  class="item miess_groep{{ type.id }}">
+		<a ng-href="#/activity/new/{{ type.id }}">
+			<div class="caption activity-border-color-{{ type.id}} activity-color-{{type.id}} heading-{{ type.id}}"><span class="hidden-xsXXX">{{ type.caption }}</span>&nbsp;</div>
+		</a> 
+	</div>
+</div>	
+
+

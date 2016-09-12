@@ -1,0 +1,70 @@
+	<div class="panel panel-default invite">
+		<div class="panel-heading">Met iemand samen</div>
+		<div class="panel-body panel-fix " ><!-- spacing -->
+			<div class="row ">
+				<div class="form-group">
+					<div class="">
+						<input name="title" ng-model="model.subject" placeholder="Onderwerp van het bericht" class="form-control">						
+					</div>
+				</div>
+			</div>	
+			<div class="row clearfix">	
+				<div class="form-group">			
+					<div >
+						<textarea class="form-control animate msd-elastic" ng-model="model.invitation"></textarea>
+					</div>
+				</div>
+			</div>	
+			<div class="row clearfix">
+				<div class="form-group">
+					<input type="checkbox" ng-model="model.isPrivate" >
+					<label class="control-label" for="isPrivate">Uitnodiging alleen zichtbaar voor genodigden</label>
+				</div>	
+			</div>			
+			
+			<div class="recipient-list" ng-show="formState==='add' || formState==='edit'">
+				<h3>uitnodigen</h3>
+				<div class="name" ng-click='toClick(owner.id)'>				
+					<span ng-show="model.inviteIds.indexOf(owner.id) >= 0" class="id-user-{{owner.id}} glyphicon glyphicon-ok-circle color-accept"></span>
+					{{ owner.name}} 
+				</div>
+				<div class="user" ng-repeat="group in groups track by $index">
+					<h3 ng-show="$first">groepen</h3>
+					<div class="name" ng-click='toClickGroup($index)'>				
+						<span class="id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept" style="display:none"></span>
+						{{ group.caption}}		
+					</div>
+				</div>	
+				<div class="user" ng-repeat="user in userList">
+					<h3 ng-show="$first">personen</h3>
+					<div class="name" ng-click='toClick(user.id)'>				
+						<span ng-show="model.inviteIds.indexOf(user.id) >= 0" class="id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept" styleXXXX="display:none"></span>
+						{{ user.name}} 
+					</div>
+				</div>	
+			</div>
+<!--			
+			<div class="row clearfix">
+				<div class="form-group">
+					<h3>Uitnodiging versturen aan:</h3>					
+				</div>	
+			</div>			
+			<div class="row clearfix">	
+				<div class="share" ng-repeat="group in shares">
+					<div class="form-group">
+						<h4 class="control-label" ng-click="toggleGroup($index)" ng-show="$first==false">{{ group.name }}</h4>
+						<span class="invite-user" ng-repeat="user in group.members">
+							<input id="invite-user-{{user.id}}" 
+										 type="checkbox" 
+										 ng-checked="model.invite.indexOf(user.id) > -1"
+										 ng-click="invite(user.id)" 
+										 class="invite-group-{{group.id}}">
+							<label for="invite-user-{{user.id}}">{{ user.name }}</label><span ng-hide="$last"><br /></span>
+						</span>						
+					</div>	
+				</div>
+			</div>	
+-->
+			<!-- the invitation has been send. List the current ones  -->
+		</div>
+	</div>

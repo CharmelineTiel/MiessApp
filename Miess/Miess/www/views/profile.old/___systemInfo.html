@@ -1,0 +1,37 @@
+<!--
+	return information about the current system
+-->
+
+<div class="row clearfix">
+	<div class="col-xs-12 col-sm-4 col-sm-push-2">
+		<h1 class="miess_pagetitle" >Systeem info</h1>
+	</div>
+</div>
+<div class="row clearfix">
+	<div class="col-xs-12 col-sm-6 col-sm-push-2">		
+		<dl class="dl-horizontal">
+			<dt>name</dt>
+			<dd>{{ device.info.name }}</dd>
+			<dt>cordova</dt>
+			<dd>{{ device.info.cordova}}</dd>
+			<dt>platform</dt>
+			<dd>{{ device.info.platform}}</dd>
+			<dt>uuid</dt>
+			<dd>{{ device.info.uuid}}</dd>
+			<dt>version</dt>
+			<dd>{{ device.info.version}}</dd>
+			<dt>model</dt>
+			<dd>{{ device.info.model}}</dd>
+			<dt>is iOS</dt>
+			<dd>{{ device.isIos() }}</dd>
+			<dt>is Android</dt>
+			<dd>{{ device.isAndroid() }}</dd>
+			<dt>is Web</dt>
+			<dd>{{ device.isWeb() }}</dd>
+		</dl>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		
+	</div>
+
+</div>

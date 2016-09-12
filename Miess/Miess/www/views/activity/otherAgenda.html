@@ -1,0 +1,13 @@
+<h3 ng-show="$first">Activiteit uit andere agenda</h3>
+<div class="panel panel-default invite view-invitation" ng-show="model.masterActivity.id > 0">
+  <div class="panel-heading ">
+    Geaccepteerde afspraak.
+  </div>
+  <div class="panel-body">
+    <p>
+      Je hebt de uitnodiging geaccepteerd. De uitnodiging komt uit <strong>{{ model.masterActivity.agenda.title}}</strong>.</p>
+    <p>
+      Als je er over wil communiceren dan moet je wisselen naar deze agenda<br />
+    </p>
+  </div>
+</div>

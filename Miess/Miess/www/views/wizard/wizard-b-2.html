@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-sm-7 col-sm-push-1">
+    <h2>Aanmaken van een nieuwe MiessAgenda</h2>
+    <!-- B -->
+    <div class="alert alert-warning" ng-show="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div class="userTypeBPlain">
+      
+      <h3>Overzicht</h3>
+      <p>Er wordt een agenda aangenaakt met de volgende gegevens:</p>
+
+        <div class="table-responsive">
+
+            <div class="theOwner">
+                <table class="table overviewDetails">
+                    <tbody>
+                    <tr>
+                        <td class="overviewName"> Naam: <br /> <strong>{{ model.name }}</strong></td>
+                        <td>Email: <br /> <strong>{{ model.email}}</strong></td>
+                        <!--<td>wachtwoord: {{ //model.password }}</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p ng-show="model.email1 || model.email2 || model.email3"><h5>Aan deze agenda worden direct de volgende gebruikers toegevoegd:</h5>
+            </p>
+            <div class="theFollower">
+                <table class="table overviewDetails">
+                    <tbody>
+                    <tr ng-show="model.email1">
+                        <td class="overviewName">{{ model.name1}}</td>
+                        <td>{{model.email1}}</td>
+                        <td>({{ groupName(model.group1) }})</td>
+                    </tr>
+                    <tr ng-show="model.email2">
+                        <td>{{ model.name2}}</td>
+                        <td>{{ model.email2}}</td>
+                        <td>({{ groupName(model.group2)}})</td>
+                    </tr>
+                    <tr ng-show="model.email3">
+                        <td>{{ model.name3}}</td>
+                        <td>{{ model.email3}}</td>
+                        <td>({{ groupName(model.group3)}})</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="btn btn-primary"
+                ng-click="generateAgenda()">
+            Aanmaken en Uitnodigen
+        </button>
+    </div>
+  </div>
+  <div class="col-sm-3 col-sm-push-1">
+    <div class="drawline always">
+      <h2><!-- geen titel -->&nbsp;</h2>
+      <p>Druk op 'Aanmaken en uitnodigen' en je kunt direct aan de slag met de agenda. Alle genoemde personen ontvangen direct een email zodat ze kunnen deelnemen aan deze agenda.</p>
+      <p><strong>Let op!</strong> Met het aanmaken van de MiessAgenda ga je akkoord met de algemene voorwaarden en het privacy statement. Zie de website miessagenda.nl.</p>
+    </div>
+  </div>
+</div>

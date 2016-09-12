@@ -1,0 +1,47 @@
+<!-- Invite other users to join the agenda -->
+<div class="container" ng-controller="AgendaController">
+	<form class="form-horizontal" name="update" ng-submit="shareUpdate()" id="form-update">	
+		<div ng-include="'views/profile/headerInvite.html'"></div>	
+		<div class="row clearfix">
+			<div class="col-sm-6 col-sm-push-4">
+				<h1 class="miess_pagetitle" >Agendas</h1>
+				<hr class="half-rule">
+			</div>
+		</div>
+		<div class="row clearfix" ng-show="errorMessage">
+			<div class="col-sm-8 col-sm-push-2 alert alert-warning">
+				{{ errorMessage }}
+			</div>
+		</div>	
+		<div class="row clearfix" ng-show="infoMessage">
+			<div class="col-sm-8 col-sm-push-2 alert alert-success">
+				{{ infoMessage }}
+			</div>
+		</div>	
+
+		{{ updateListAgendas() }}
+		<div class="col-sm-4" ng-repeat='current in agendas'>
+			<div class="panel panel-default" ng-class="{ 'panel-primary' : agenda.id == current.id }">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ current.title }}</h3>
+				</div>
+				<div class="panel-body">
+					<!-- four states: owner, invited, accepted, denied (block is not show) -->
+					<h4 ng-show='current.isOwner == 1' class="well">Mijn agenda</h4>
+					<h4 ng-show='current.isAccepted == 1 && current.isOwner == 0' class="well">Aangenomen</h4>
+					<h4 ng-show='current.isDenied == 1' class="well">Afgewezen</h4>
+					<div ng-hide='current.isOwner == 1 || current.isAccepted == 1 || current.isDenied == 1'>
+						<h4 ng-show='current.isDenied' class="well" >Uitgenodigd</h4>
+						<button ng-click='acceptAgenda(current.id)' class='btn btn-primary'>Accepteren</button>
+					</div>	
+					<dl>
+						<dd ng-hide="{{ current.name == null }}">gebruikers naam</dd><dt ng-hide="{{ current.name == null }}"> {{ current.name }} </dt>
+					</dl>
+					<div ng-show="current.isAccepted == 1 && agenda.id != current.id">
+						<button ng-click='activateAgenda(current.id)' class='btn btn-primary'>Activeren</button>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</form>
+</div>					 

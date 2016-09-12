@@ -1,0 +1,36 @@
+<div class="row " ng-show="errorMessage">
+  <div class="col-sm-10 col-sm-push-1 alert alert-warning">
+    {{ errorMessage }}
+  </div>
+</div>
+<div class="row" ng-show="infoMessage">
+  <div class="col-sm-10 col-sm-push-1 alert alert-success">
+    {{ infoMessage }}
+  </div>
+</div>
+
+<div class="row view">
+
+  <h2>Profiel</h2>
+
+	<div class="view-label">naam</div>
+	<div class="share-field">{{ model.username }}</div>
+	<div class="view-label">email</div>
+	<div class="share-field">{{ model.email }}</div>
+	<div class="view-label" ng-show="model.telephone">telefoon</div>
+	<div class="share-field">{{ model.telephone }}</div>
+	<div class="view-label" ng-show="model.emailPublic">publiek email adres</div>
+	<div class="share-field">{{ model.emailPublic }}</div>
+
+  <div ng-show="model.street || model.city">
+    <hr />
+    <div class="view-label" ng-show="model.street">straat</div>
+    <div class="share-field">{{ model.street }}</div>
+    <div class="view-label" ng-show="model.city">postcode/plaats</div>
+    <div class="share-field">{{ model.zipcode }} {{ model.city }}</div>
+  </div>
+	<hr />
+	<div class="view-label">agenda naam</div>
+	<div class="share-field">{{ model.agendaTitle }}</div>
+	
+</div>

@@ -1,0 +1,23 @@
+<div class="row view list-agenda">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1" ng-repeat="agenda in model.agendas | filter: {isOwner:0}">
+    <h2>Delen agenda</h2>
+    <div class="panel panel-default" ng-class="{'panel-success' : agenda.isActive==1 }">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ agenda.title }}</h3>
+      </div>
+      <div class="panel-body">
+        <p><strong>{{ model.invitation.name}}</strong> heeft je uitgenodigd om de agenda van {{ model.invitation.name}} met je te delen.
+          Als je deze uitnodiging accepteert kan je in de agenda meekijken.
+          Afhankelijk van de rechten die je hebt gekregen kan je ook afspraken in de agenda zetten en andere gebruikers uitnodigen.
+          Ook kan je berichten naar elkaar sturen. Samen beheer je de agenda.
+        <p>
+          Wil je de uitnodiging accepteren?
+        </p>
+        <p class="text-center">
+          <button class="btn btn-success" ng-click="acceptShare(model.invitation.shareId)">Accepteer de uitnodiging</button>
+          <button class="btn btn-danger" ng-click="denyShare(model.invitation.shareId)">Uitnodiging afwijzen</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

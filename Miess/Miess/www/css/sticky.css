@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.tx-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+.tx-footer, .tx-push {
+  height: 4em;
+  z-index: 200;
+}
+#id-nav {
+  display: none !important;
+}

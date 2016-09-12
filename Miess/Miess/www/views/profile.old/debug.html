@@ -1,0 +1,73 @@
+	<h3>Debug informatie</h3>
+	
+	<table class='debug-info' ng-controller="ProfileController">
+		<tbody>
+      <tr>
+        <td class='view-label'>connection guid</td>
+        <td class='view-value'>{{ device.deviceGuid }}</td>
+      </tr>
+
+			<tr>
+				<td class='view-label'>name</td>
+				<td class='view-value'>{{ device.name }}</td>				
+			</tr>
+			<tr>
+				<td class='view-label'>platform</td>
+				<td class='view-value'>{{ device.platform}}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>uuid</td>
+				<td class='view-value'>{{ device.uuid}}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>version</td>
+				<td class='view-value'>{{ device.version}}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>model</td>
+				<td class='view-value'>{{ device.model}}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>is iOS</td>
+				<td class='view-value'>{{ device.isIos }}</td>
+			</tr>
+			<tr>			
+				<td class='view-label'>is Android</td>
+				<td class='view-value'>{{ device.isAndroid }}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>is Web</td>
+				<td class='view-value'>{{ device.isWeb }}</td>
+			</tr>
+      <tr>
+        <td class='view-label'>is App</td>
+        <td class='view-value'>{{ device.isApp }}</td>
+      </tr>
+
+			<tr>
+				<td class='view-label'>native date</td>
+				<td class='view-value'>{{ device.hasInputNativeDate }}</td>
+			</tr>
+			<tr>
+				<td class='view-label'>agenda state</td>
+				<td class='view-value'>{{ debug.agendaView }}</td>
+			</tr>
+      <tr>
+        <td class='view-label'>develope state</td>
+        <td class='view-value'>{{ device.develop }} - server: {{ device.server }}</td>
+      </tr>
+      <tr>
+        <td class='view-label'>wait tester</td>
+        <td class='view-value'><span class="btn btn-sm" ng-click="testWait()">toggle</span></td>
+      </tr>
+      <tr>
+        <td class='view-label'>app version</td>
+        <td class='view-value'>{{ device.appVersion }}</td>
+      </tr>
+      <tr>
+        <td class='view-label'>screen (HxW)</td>
+        <td class='view-value'>{{ screen.height}} x {{ screen.width }}</td>
+      </tr>
+
+		</tbody>
+	</table>	

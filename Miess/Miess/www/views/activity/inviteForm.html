@@ -1,0 +1,64 @@
+<div class="invited scroll-box">
+  <h2>Met iemand samen<span class="pull-right"><img src="images/share.png" /></span></h2>
+  <div class="msg">
+    <div class="form-group">
+      <label class="label" for="id-subject">onderwerp</label>
+      <input type="text"
+             id="id-subject"
+             ng-model="model.inviteSubject"
+             class="form-control"
+             placeholder="Onderwerp van de uitnodiging"
+             ng-focus="copyTitle()"
+      />
+    </div>
+    <div class="form-group">
+      <label class="label" for="id-invitation">uitnodiging</label>
+      <textarea id="id-invitation"
+                class="form-control"
+                msd-elastic="\n"
+                ng-model="model.inviteMessage"
+                placeholder="Indien leeg dan wordt de omschrijving van de activiteit gebruikt">
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-checkbox" for="id-is-private">
+        <input id="id-is-private"
+               type="checkbox"
+               ng-model="model.isPrivate"
+               data-ng-true-value="1"
+               data-ng-false-value="0">
+          Privébericht
+      </label>
+    </div>
+   </div>
+
+  <div class="recipient-list">
+    <h3>Uitnodiging versturen aan</h3>
+    <div class="list" ng-hide="owner.id == user.shareId">
+      <div class="user clickable" ng-click='toClick(owner.id)'>
+        <div ng-show="recipients.indexOf(model.ownerId.toString()) >= 0 "
+             class="marker id-user-{{owner.id}} glyphicon glyphicon-ok-circle color-accept"></div>
+        {{ owner.name}}
+      </div>
+    </div>
+    <div class="list" ng-repeat="group in groups track by $index">
+      <h4 ng-show="$first">Aan een groep</h4>
+      <div class="user clickable"
+           ng-click='toClickGroup($index)'
+           ng-show="group.caption">
+        {{ group.caption}}
+      </div>
+    </div>
+    <div class="list" ng-repeat="user in userList">
+      <h4 ng-show="$first">Aan losse personen</h4>
+      <div class="user clickable" ng-click='toClick(user.id)'>
+        <div ng-show="recipients.indexOf(user.id.toString()) >= 0"
+             class="marker id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept"></div>
+        {{ user.name}}
+        <span class="pull-right" ng-show="findRecipient(user.id).isAccepted==1">geaccepteerd</span>
+        <span class="pull-right" ng-show="findRecipient(user.id).isDenied==1">afgewezen</span>
+      </div>
+    </div>
+  </div>
+</div>

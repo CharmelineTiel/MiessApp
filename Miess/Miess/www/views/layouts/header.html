@@ -1,0 +1,53 @@
+<div class="col-md-12">
+<div class="col-xs-offset-1 col-xs-2">
+		<a href="#/agenda" >
+			<div class="nav-agenda" ng-class="{active: menu.active==='agenda'}">
+				<div class="nav-text text-center">
+					<!--<span class="hidden-xs">agenda</span>-->&nbsp;
+        </div>
+			</div>
+		</a>	
+	</div>	
+	
+	<div class="col-xs-2">
+		<a href="#/message" ng-show="user.isTempAccount==0" >
+			<div class="nav-message" ng-class="{active: menu.active==='message'}">
+				<div class="nav-text text-center">					
+					<!--<span class="hidden-xs">berichten</span>--> <span class="badge" ng-show="unreadCount > 0">{{ unreadCount }}</span> &nbsp;
+				</div>	
+			</div>
+		</a>							
+	</div>	
+	
+	<div class="col-xs-2">
+		<a href="#/info">
+			<div class="nav-info" ng-class="{active: menu.active==='info'}">
+				<div class="nav-text text-center" ng-click="bottom()">
+					<!--<span class="hidden-xs">informatie</span>-->&nbsp;
+				</div>			
+			</div>
+		</a>									
+	</div>	
+
+	<div class="col-xs-2">
+		<a href="#/share">		
+			<div class="nav-share"  ng-show="user.isTempAccount==0" ng-class="{active: menu.active==='share'}">
+				<div class="nav-text text-center">
+          <!--<span class="hidden-xs" ng-show="agenda.isAdmin==1">uitnodigen</span>
+          <span class="hidden-xs" ng-hide="agenda.isAdmin==1">deelnemers</span>-->
+          &nbsp;
+				</div>	
+			</div>
+		</a>									
+	</div>	
+
+	<div class="col-xs-2">
+		<a href="#/profile">
+			<div class="nav-profile" ng-class="{active: menu.active==='profile'}">		
+				<div class="nav-text text-center">					
+					<!--<span class="hidden-xs">instellingen</span>-->&nbsp;
+				</div>	
+			</div>
+		</a>									
+	</div>	
+</div>

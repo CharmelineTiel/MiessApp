@@ -1,0 +1,210 @@
+
+<!-- 
+	show the profile system 
+-->
+<div  ng-controller="ProfileController">
+  <form name="profileForm" role="form" class="profile">
+    <div id="id-message" class="container-fluid">
+      <header id="id-header" class="bar bar-nav row">
+        <div class="col-xs-4 col-sm-3">
+          <span class="btn" ng-show="formState=='edit' || formState=='save'" ng-click="cancel()">annuleer</span>
+        </div>
+        <div class="col-sm-9">
+          <button class="btn pull-right"  ng-click="edit()" ng-show="formState == 'view'">
+            <span class="hidden-xs">wijzig </span><span class="glyphicon glyphicon-pencil"></span>
+          </button>
+
+          <button class="btn pull-right" ng-click="save()" ng-show="formState=='edit' || formState =='save'">
+            <span class="hidden-xs">bewaar</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
+          </button>
+          <button class="btn pull-right" ng-click="changePassword('show')" ng-show="formState=='view'">
+            <span class="hidden-xs">wijzig wachtwoord</span><span class="visible-xs"><span class="glyphicon glyphicon-plane"></span></span>
+          </button>
+        </div>
+      </header>
+
+      <nav id="id-nav"
+           class="bar bar-tab"
+           style="top: {{ navTop() }}"
+           ng-include="'views/layouts/header.html'">
+      </nav>
+
+      <div class="content" ng-show="model.isTempAccount == 0">
+        <div class="col-xs-5 col-sm-4 view-list profile-list" data-ng-disabled="inEdit" ng-class="{'div-disabled' :inEdit}">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Instellingen</h3>
+            </div>
+            <div class="panel-body">
+              <p>Algemene instelling van het agendaprofiel.</p>
+            </div>
+          </div>
+          <div class="list" ng-class="{selected : formState=='view' || formState=='edit'}">
+            <div class="view-list-caption" ng-click="formState='view'">mijn agenda profiel</div>
+          </div>
+          <div class="list" ng-class="{selected : formState=='agenda'}" ng-show="model.agendas.length > 1">
+            <div class="view-list-caption" ng-click="formState='agenda'">wissel agenda</div>
+          </div>
+          <div class="list" ng-class="{selected : formState=='invitation'}" ng-show="showInvitation">
+            <div class="view-list-caption" ng-click="formState='invitation'">uitnodiging</div>
+          </div>
+          <div class="list selected" ng-show="formState=='max'">
+            <div class="view-list-caption" ng-click="formState='invitation'">professional</div>
+          </div>
+          <div class="list">
+            <div class="view-list-caption" ng-click="logout()">afmelden</div>
+          </div>
+          <div class="list"  ng-class="{selected : formState=='debug'}">
+            <div class="view-list-caption" ng-click="formState='debug'" ng-show="isDebug"> debug informatie</div>
+          </div>
+          <div class="list-end view-list-caption"></div>
+        </div>
+
+        <div class="hidden-sm col-md-1">
+          <div class="view-icon"></div>
+        </div>
+        <div class="col-xs-7 col-sm-7">
+          <div ng-show="errorMessage">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h3 class="panel-title">Er is een fout opgetreden</h3>
+              </div>
+              <div class="panel-body">
+                {{ errorMessage }}
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="formState=='view'">
+            <div ng-include="'views/profile/view.html'"></div>
+          </div>
+          <div ng-show="formState=='edit' || formState=='save'">
+            <div ng-include="'views/profile/edit.html'"></div>
+          </div>
+          <div ng-show="formState=='agenda'">
+            <div ng-include="'views/profile/agenda.html'"></div>
+          </div>
+          <div ng-show="formState=='invitation'">
+            <div ng-include="'views/profile/invitation.html'"></div>
+          </div>
+          <div ng-show="formState=='max'">
+            <div ng-include="'views/profile/invitationMax.html'"></div>
+          </div>
+          <div ng-show="formState=='debug'">
+            <div ng-include="'views/profile/debug.html'"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content" ng-show="model.isTempAccount==1">
+        <div ng-include="'views/profile/unknownUser.html'"></div>
+      </div>
+    </div>
+  </form>
+
+
+
+  <div class="modal fade" id="requestPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form name="myForm" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Opvragen van het wachtwoord</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Vul hieronder je e-mailadres in en klik op verzenden. Je ontvangt dan een e-mail van ons waarmee je een nieuw wachtwoord kunt opgeven.
+          </p>
+          <label for="id-request-email">Email</label>
+          <div class="input-group">
+            <input class="form-control"
+                   id="id-request-email"
+                   ng-class="{ 'warning' : myForm.input.$error.email }"
+                   type="email"
+                   name="input"
+                    ng-model="dialog.email" required>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-ok alert-success" ng-show="myForm.$valid"></span>
+              <span class="glyphicon glyphicon-remove alert-danger" ng-hide="myForm.$valid"></span>
+            </span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  class="btn btn-default"
+                  data-dismiss="modal">annuleer</button>
+          <button type="button"
+                  class="btn btn-primary"
+                  ng-click="requestPassword('send')"
+                  data-ng-disabled="myForm.$invalid">opvragen</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form name="formPassword" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Wijzigen van het wachtwoord</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-success" ng-show="infoMessage">
+              {{ infoMessage }}
+            </div>
+            <p>
+              Als je je wachtwoord wilt wijzigen, vul dan hieronder je nieuwe wachtwoord in.
+              Een goed wachtwoord heeft naast letters en hoofdletters ook speciale tekens of cijfers.<br />
+              Een wachtwoord moet minimaal 4 tekens hebben.
+            </p>
+            <label for="id-password">Wachtwoord </label>
+            <div class="input-group">
+              <input class="form-control"
+                     id="id-password"
+                     type="password"
+                     name="password"
+                     ng-maxlength="20"
+                     ng-model="dialog.password"
+                     required>
+              <span class="input-group-addon">&nbsp;
+              </span>
+            </div>
+            <label for="id-password-repeat">Herhaal het wachtwoord</label>
+            <div class="input-group">
+              <input class="form-control"
+                     id="id-password-repeat"
+                     ng-class="{ 'warning' : 1 }"
+                     type="password"
+                     name="passwordRepeat"
+                     ng-maxlength="20"
+                     ng-model="dialog.passwordRepeat"
+                     required>
+              <span class="input-group-addon">
+<!--
+                <span class="glyphicon glyphicon-ok alert-success" ng-show="formPassword.$valid"></span>
+                <span class="glyphicon glyphicon-remove alert-danger" ng-hide="formPassword.$valid"></span>
+-->
+              </span>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal">annuleer</button>
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="changePassword('change')">
+                wijzigen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>

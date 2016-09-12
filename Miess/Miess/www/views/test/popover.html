@@ -1,0 +1,46 @@
+<div ng-controller="TestController" >
+	This is the test controller.<br/>
+	
+	
+<!-- Button to trigger a default popover with a scope as an object {title:'', content:'', etc.} -->
+    <button type="button" class="btn btn-lg btn-primary" data-placement="bottom" data-animation="am-flip-x" bs-popover="popover">Click to toggle popover
+      <br />
+      <small>(using an object)</small>
+    </button>
+
+    <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+        <label class="control-label"><i class="fa fa-calendar"></i> Date <small>(as date)</small> [{{ selectedDate }}]</label>
+        <input class="form-control"
+               data-autoclose="1"
+               data-date-format="dd MMM yyyy"
+               ng-model="selectedDate"
+               name="date"
+               type='text'
+               bs-datepicker>
+    </div>
+    <input id="startTime"
+           bs-timepicker
+           data-autoclose="1"
+           data-time-type="string"
+           data-use-native="1"
+           data-length="5"
+           data-timeformat="HH:mm"
+           type='text'
+           class="form-control"
+           ng-model="selectedDate"
+           step="5"/>
+
+
+
+
+ <input type="checkbox"
+        ng-model="checkValue"
+        ng-true-value="1"
+        ng-false-value="0"
+
+   />
+
+ <button class="btn"
+         ng-click="readCheckValue()">Read {{checkValue }}</button>
+
+</div>

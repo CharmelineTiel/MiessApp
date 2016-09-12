@@ -1,0 +1,146 @@
+<!--
+ show the content of one message
+-->
+
+<div class="message msg-view">
+	<div class="msg-header">
+		<span>{{ model.subject }}</span>
+	</div>
+	<div class="msg-box activity-border-color-{{ model.activity.typeId }}">
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">inhoud bericht</span>
+		<div class="row">
+      <div class="col-sm-8">
+        <div class="msg-label">bericht</div>
+        <div class="msg-body" ng-bind-html="model.body |nl2br">
+        </div>
+      </div>
+			<div class="col-sm-4">
+				<div class="msg-label">datum</div>
+				<div class="msg-view">{{ formatDate(model.sendDate) }}</div>
+        <div class="msg-label">van</div>
+        <div class="msg-field-limit">{{ model.sender.name }}</div>
+			</div>
+		</div>
+	</div>	
+	<!-- the invitation for ME maybe already accepted -->
+	<div class="msg-box activity-border-color-{{ model.activity.typeId }}" ng-hide="model.isInvitation != 1">
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">uitnodiging</span>
+		<div class="accept" ng-show="model.invitation.isAccepted==1">
+			De uitnodiging is door jou aangenomen.
+		</div>
+    <div class="accept" ng-show="model.invitation.isDenied==1">
+      De uitnodiging is door jou afgewezen.
+    </div>
+
+		<div class="unknown" ng-repeat="recipient in model.recipients |filter :{isUnknown:1, userId : user.id}">
+			<div>Je hebt nog niet gereageerd op de uitnodiging.<br >
+				<span class="msg-ask">Ga je op deze uitnodiging in?</span>
+			</div>
+			
+			<div class="msg-buttons">
+				<div class="col-xs-2 col-xs-offset-3 btn btn-success" ng-click="invitation='askYes'">Ja</div> 
+				<div class="col-xs-2 col-xs-offset-1 btn btn-danger" ng-click="invitation='askNo'">Nee</div>
+			</div>
+			<div class="ask-panel" ng-show="invitation=='askYes'">
+				<label for='id-confirm-yes' class="msg-state">Eventueel bericht bij het accepteren</label>
+				<textarea id='id-confirm-yes'
+                  rows="2"
+                  class="form-control animate msd-elastic"
+                  data-ng-model="replyText.confirmYes"></textarea>
+				<div class="commit text-center">
+					<span class="btn btn-success" ng-click="acceptInvitation(recipient.id)">Verstuur</span>
+				</div>	
+			</div>
+			<div class="ask-panel" ng-show="invitation=='askNo'">
+				<label for="id-confirm-no"
+               class="msg-state">Eventueel bericht bij het <b>afwijzen</b> van de uitnodiging in</label>
+				<textarea id="id-confirm-no"
+                  rows="2"
+                  class="form-control animate msd-elastic"
+                  data-ng-model="replyText.confirmNo">
+        </textarea>
+				<div class="commit text-center">
+					<span class="btn btn-danger" ng-click="denyInvitation(recipient.id)">Verstuur</span>
+				</div>	
+			</div>			
+		</div>		
+	</div>
+
+  <!-- An invitation to a share agenda -->
+  <div class="msg-box activity-border-color-5 }}" ng-show="model.isAgendaShare==1">
+
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">uitnodiging</span>
+    <div class="accept" ng-show="model.share.isAccepted==1">
+      De uitnodiging is door jou aangenomen.
+    </div>
+    <div class="accept" ng-show="model.share.isDenied==1">
+      De uitnodiging is door jou afgewezen.
+    </div>
+
+    <div ng-show="model.share.isDenied==0 && model.share.isAccepted==0">
+      <p><strong>{{ model.sender.name }}</strong> heeft je uitgenodigd om de agenda te delen.
+        Als je deze uitnodiging accepteert kan je in deze agenda meekijken.
+        Afhankelijk van de rechten die je hebt gekregen kan je ook afspraken in de agenda zetten en andere gebruikers uitnodigen.
+        Ook kan je berichten naar elkaar sturen. Samen beheer je de agenda.
+      </p>
+      <p>
+        Wil je de uitnodiging accepteren?
+      </p>
+      <p class="text-center">
+        <button class="btn btn-success" ng-click="acceptShare(model.share.id)">Accepteer de uitnodiging</button>
+        <button class="btn btn-danger" ng-click="denyShare(model.share.id)">Uitnodiging afwijzen</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- end shared agenda -->
+
+  <div class="msg-box activity activity-border-color-{{ model.activity.typeId }}" ng-show="model.activity.id > 0">
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">
+      betreft activiteit
+      <span class="block header-{{ model.activity.typeId }}">{{ model.activity.typeText }}</span>
+    </span>
+    <div class="info" ng-click="openActivity(model.activity.id)">
+
+      <span class="btn btn-default pull-right">openen</span>
+      <span class="act-title">{{ model.activity.title }}</span><br />
+      <span class="extra-info">{{ model.activity.period }}</span>
+    </div>
+  </div>
+
+	<div class="msg-box activity-border-color-{{ model.activity.typeId }}" ng-show="model.replyOn.id  > 0" ng-click="gotoMessage(model.replyOn.id)">
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">is een reactie op</span>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="msg-label">datum</div>
+				<div class="msg-view">{{ formatDate(reply.sendDate) }}</div>
+			</div>	
+			<div class="col-sm-6">
+				<div class="msg-label">van<span class="btn btn-default pull-right">openen</span></div>
+				<div class="msg-field-limit">{{ reply.sender.name }}</div>
+			</div>
+		</div>	
+		<div class="msg-label">bericht</div>
+		<div class="msg-field-limit">{{ reply.body }}</div>        			
+	</div>
+
+	<div class="msg-box activity-border-color-{{ model.activity.typeId }}" ng-show="model.replies.length > 0">
+    <span class="inline-caption activity-text-color-{{ model.activity.typeId }}">reacties</span>
+		<div class="reaction" ng-repeat="reply in model.replies" ng-click="gotoMessage(reply.id)">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="msg-label">datum</div>
+					<div class="msg-view">{{ formatDate(reply.sendDate) }}</div>
+				</div>	
+				<div class="col-sm-6">
+					<div class="msg-label">van<span class="btn btn-default pull-right">openen</span></div>
+					<div class="msg-field-limit">{{ reply.sender.name }}</div>
+
+				</div>
+			</div>	
+			<div class="msg-label">bericht</div>
+			<div class="msg-field-limit">{{ reply.body }}</div>        			
+			<hr ng-hide="$last"/>
+		</div>
+	</div>
+</div>

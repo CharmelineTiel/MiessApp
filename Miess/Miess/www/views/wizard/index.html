@@ -1,0 +1,105 @@
+<div id="id-agenda" class="wizard" ng-controller="WizardController">
+   <header id="id-header"  class="bar bar-nav row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <button class="btn"
+              ng-click="show('home')"
+              ng-show="state=='wizard-b-1' || state=='wizard-a'">
+        Terug
+      </button>
+      <button class="btn"
+              ng-click="show('wizard-b-1')"
+              ng-show="state=='wizard-b-2'">
+        Terug
+      </button>
+      <button class="btn"
+              ng-click="show('wizard-a')"
+              ng-show="state=='shares'">
+        Terug
+      </button>
+
+      <!--<button class="btn pull-right"
+              ng-click="validateNewAgenda()"
+              ng-show="state=='wizard-b-1'">
+        Verder
+      </button>
+      <button class="btn btn-primary pull-right"
+              ng-click="generateAgenda()"
+              ng-show="state=='wizard-b-2'">
+        Aanmaken  en Uitnodigen
+      </button>
+
+        <button class="btn btn-primary pull-right"
+                ng-click="searchAgenda()"
+                ng-show="state=='wizard-a'">
+            Agenda Zoeken
+        </button>-->
+
+        <button class="btn pull-right" ng-click="requestPassword('show')" ng-show="state=='wizard-a'">opvragen wachtwoord</button>
+        <button class="btn pull-right" ng-click="requestPassword('show')" ng-show="state=='wizard-b-1'">opvragen wachtwoord</button>
+    </div>
+  </header>
+  <nav >
+  </nav>
+  <div class="content">
+    <div class="activity">
+      <div ng-show="state=='home'">
+        <div ng-include="'views/wizard/wizard.html'" ></div>
+      </div>
+
+      <div ng-show="state=='wizard-a'">
+        <div ng-include="'views/wizard/wizard-a.html'"></div>
+      </div>
+      <div ng-show="state=='shares'">
+        <div ng-include="'views/wizard/shares.html'"></div>
+      </div>
+
+      <div ng-show="state=='wizard-b-1'">
+        <div ng-include="'views/wizard/wizard-b-1.html'" ></div>
+      </div>
+
+      <div ng-show="state=='wizard-b-2'">
+        <div ng-include="'views/wizard/wizard-b-2.html'"></div>
+      </div>
+
+     </div>
+  </div>
+  <div class="modal fade" id="requestPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form name="myForm" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Opvragen van het wachtwoord</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Vul hieronder je emailadres in en klik op verzenden. Je ontvangt dan een email van ons waarmee je een nieuw wachtwoord kunt opgeven.
+            </p>
+            <label for="id-request-email">Email</label>
+            <div class="input-group">
+              <input class="form-control"
+                     id="id-request-email"
+                     ng-class="{ 'warning' : myForm.input.$error.email }"
+                     type="email"
+                     name="input"
+                     ng-model="dialog.email" required>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-ok alert-success" ng-show="myForm.$valid"></span>
+                <span class="glyphicon glyphicon-remove alert-danger" ng-hide="myForm.$valid"></span>
+              </span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal">annuleer</button>
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="requestPassword('send')"
+                    data-ng-disabled="myForm.$invalid">opvragen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

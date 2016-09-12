@@ -1,0 +1,29 @@
+<!-- 
+ the form to add a new or modify an unsend message content
+ version 1.0 JvK
+-->
+<div class="message-edit">
+	<div class="msg-header">
+		Nieuw bericht
+	</div>
+
+	<div class="msg-box msg-edit">
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.subject && !model.subject.$pristine }">
+			<label class="control-label" for="id-subject">Onderwerp</label>
+			<input id="id-subject" name="subject" ng-model="model.subject" placeholder="Kort beschrijving onderwerp" class="form-control">
+			<p ng-show="model.errors.subject" class="help-block">Er moet een onderwerp zijn</p> 
+		</div>
+
+		<!-- Body Textarea -->
+		<div class="form-group">
+			<label class="control-label" for="id-body">Bericht</label>
+			<textarea id="id-body" class="form-control animate msd-elastic" ng-model="model.body"></textarea>
+		</div>
+		<div class="checkbox">
+			<label class="control-label" for="id-body">
+				<input id="id-is-private" type="checkbox" name="subject" ng-model="model.isPrivate">
+				Bericht is alleen leesbaar voor geadresseerden		
+			</label>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<div class="col-sm-7 col-xs-12 ">
+  <div class="panel panel-default border-{{ model.typeId }} scroll-box">
+    <div class="panel-heading heading-{{ model.typeId }} " >
+      {{ model.typeText }}
+    </div>
+    <div class="panel-body panel-fix " ><!-- spacing -->
+      <div class="row" ng-show="errorMessage">
+        <div class="form-group">
+          <div class="alert alert-warning">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row ">
+        <div class="form-group">
+          <label class="control-label" for="title">Activiteit</label>
+          <div class="text">
+            {{ model.title }}
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="form-group">
+          <label class="control-label" for="description">Omschrijving</label>
+          <div class="text" ng-bind-html="model.description |nl2br">
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="form-group">
+          <label class="control-label" for="title">Wanneer</label>
+          <div class="text">
+            {{ model.period }}
+          </div>
+        </div>
+      </div>
+      <div class="row" ng-show="model.location.length">
+        <div class="form-group">
+          <label class="control-label" for="title">Locatie</label>
+          <div class="text" ng-bind-html="model.location |nl2br"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>

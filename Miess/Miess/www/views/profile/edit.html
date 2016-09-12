@@ -1,0 +1,59 @@
+<!-- 
+ version 1.0 JvK
+-->
+<div class="row" >
+	<h2>Profiel</h2>
+</div>
+<div class="row" >
+	<div class="col-sm-6">
+		
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.name && !model.name.$pristine }">
+			<label class="control-label" for="id-subject">naam</label>
+			<input id="id-name" name="name" ng-model="model.username" placeholder="Naam " class="form-control">
+			<p ng-show="model.errors.name" class="help-block">Er moet een naam gegeven worden</p> 
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.email && !model.email.$pristine }">
+			<label class="control-label" for="id-email">email</label>
+			<input id="id-email" name="email" ng-model="model.email" placeholder="Email adres" class="form-control">
+			<p ng-show="model.errors.email" class="help-block">{{model.errors.email }}</p> 
+		</div>
+		
+		<h3>publiek</h3>
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.telephone && !model.telephone.$pristine }">
+			<label class="control-label" for="id-telephonet">telefoon</label>
+			<input id="id-telephone" name="telephone" ng-model="model.telephone" placeholder="Telefoon " class="form-control">
+			<p ng-show="model.errors.telephone" class="help-block">{{ model.errors.telephone}}</p> 
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.emailPublic && !model.emailPublic.$pristine }">
+			<label class="control-label" for="id-emailPublic">email</label>
+			<input id="id-email" name="emailPublic" ng-model="model.emailPublic" placeholder="email publiek " class="form-control">
+			<p ng-show="model.errors.emailPublic" class="help-block">{{ model.errors.emailPublic}}</p> 
+		</div>		
+	</div>	
+	
+	<div class="col-sm-6">
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.agendaTitle && !model.agendaTitle.$pristine }">
+			<label class="control-label" for="id-agendaTitle">agenda titel</label>
+			<input id="id-agendaTitle" name="agendaTitle" ng-model="model.agendaTitle" placeholder="agenda naam " class="form-control">
+			<p ng-show="model.errors.agendaTitle" class="help-block">{{ model.errors.agendaTitle }}</p> 
+		</div>		
+		
+		<h3>contact gegevens</h3>
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.street && !model.street.$pristine }">
+			<label class="control-label" for="id-street">straat</label>
+			<input id="id-street" name="street" ng-model="model.street" placeholder="Straat" class="form-control">
+			<p ng-show="model.errors.street" class="help-block">{{model.errors.street }}</p> 
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : model.errors.zipcode && !model.zipcode.$pristine }">
+			<label class="control-label" for="id-zipcode">postcode / plaats </label>
+			<input id="id-zipcode" name="zipcode" ng-model="model.zipcode" placeholder="postcode" class="form-control">
+			<input id="id-city" name="city" ng-model="model.city" placeholder="Plaats" class="form-control">
+			<p ng-show="model.errors.zipcode" class="help-block">{{model.errors.zipcode }}</p> 
+			<p ng-show="model.errors.city" class="help-block">{{model.errors.city }}</p> 
+		</div>
+
+	</div>
+	
+</div>	

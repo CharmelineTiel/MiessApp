@@ -1,0 +1,84 @@
+<!-- 
+ the form to add a new or modify an unsend message content
+ version 1.0 JvK
+-->
+<div class="row">
+	<h2 ng-show="formState=='edit'">Agenda deelnemer aanpassen</h2>
+	<h2 ng-show="formState=='add'" >Nieuwe uitnodiging</h2>			
+
+	<div class="panel panel-danger" ng-show="errorMessage">
+		<div class="panel-heading">
+			<h3 class="panel-title" ng-show="model.errors.length > 1">Er zijn een fouten opgetreden</h3>
+			<h3 class="panel-title" ng-show="model.errors.length == 1 || errorMessage">Er is een fout opgetreden</h3>
+		</div>
+		<div class="panel-body">
+			Pas de gegevens aan en probeer het opnieuw.
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error' : model.errors.name && !model.name.$pristine }">
+		<label class="form-label" for="id-name">naam</label>
+		<input id="id-name" name="name" ng-model="model.name" placeholder="Naam in agenda" class="form-control">
+		<p ng-show="model.errors.name" class="help-block">Er moet een naam gegeven worden</p> 
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error' : model.errors.email && !model.email.$pristine }">
+		<label class="form-label" for="id-email">email</label>
+		<input id="id-email" name="email" ng-model="model.email" placeholder="Email adres" class="form-control">
+		<p ng-show="model.errors.email" class="help-block">{{model.errors.email }}</p> 
+	</div>
+	<div class="form-group" ng-class="{ 'has-error' : model.errors.groupId }">
+		<label class="form-label" >de gebruiker hoort tot de groep</label>
+		<ul class="form-groups">
+			<li ng-repeat="group in groups">
+        <label class="form-checkbox">
+				  <input type="radio" ng-model="model.groupId" ng-value="group.id">
+				  {{ group.caption }}
+        </label>
+			</li>	
+			
+		</ul>
+		<p ng-show="model.errors.groupId" class="help-block">{{ model.errors.groupId}}</p>
+	</div>
+
+	<!-- Body Textarea -->
+	<div class="form-group">
+		<label class="form-label" for="id-inviteMessage">bericht bij de uitnodiging</label>
+		<textarea id="id-inviteMessage" class="form-control animate msd-elastic rows-3" data-ng-model="model.inviteMessage" rows="3"></textarea>
+	</div>
+
+	<div class="form-group" >
+    <label class="form-checkbox">
+		  <input type="checkbox"
+           ng-model="model.isWritable"
+           data-ng-true-value="1"
+           data-ng-false-value="0"
+     ng-checked="true" />
+		  gebruiker kan activiteiten in de agenda zetten
+    </label>
+	</div>		
+	
+	<div class="form-group" >
+    <label class="form-checkbox">
+		  <input type="checkbox"
+           ng-model="model.isAdmin"
+           data-ng-true-value="1"
+           data-ng-false-value="0"
+       ng-checked="true" />
+		  gebruiker kan anderen uitnodigen
+    </label>
+	</div>
+
+  <div class="form-group" >
+    <label class="form-checkbox">
+      <input type="checkbox"
+             ng-model="model.isBlocked"
+             data-ng-true-value="1"
+             data-ng-false-value="0"
+             />
+      deze gebruiker heeft <b>geen</b> toegang meer tot de agenda
+    </label>
+  </div>
+
+
+</div>	

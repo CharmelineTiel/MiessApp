@@ -1,0 +1,27 @@
+<!--
+	List the invitations send
+-->
+<div ng-repeat="message in model.invitations">
+	<h3 ng-show="$first">uitgenodigd zijn</h3>					
+	<div class="panel panel-default invite view-invitation">
+		<div class="panel-heading ">		
+			Uitnodiging			
+		</div>
+		<div class="panel-body">
+			<div class="view-label">onderwerp</div>
+			<div>{{ message.subject }}</div>
+			<div class="view-label">verstuurd</div>
+			<div >{{ formatDate(message.date,'D MMMM YYYY hh:mm') }}</div>
+			<div ng-bind-html="message.body |nl2br"></div>        
+			<div ng-repeat="recipient in message.recipients">
+				<div ng-show="$first" class="view-label">uitgenodigd</div>
+				<div class="recipient">
+					<span ng-show="recipient.isAccept==1" class="glyphicon glyphicon-ok-circle color-accept"></span>
+					<span ng-show="recipient.isDenied==1" class="glyphicon glyphicon-remove-circle color-deny"></span>
+					<span ng-show="recipient.isUnknown==1" class="glyphicon glyphicon-question-sign color-unknown"></span>
+					{{ recipient.name }}
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>	

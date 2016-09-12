@@ -1,0 +1,38 @@
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="row">
+      <div class="col-sm-5 col-sm-push-1">
+        <h2>Meekijken in agenda</h2>
+        <div class="alert alert-warning" ng-show="errorMessage">
+          {{ errorMessage }}
+        </div>
+        <div class="userTypeAPlain">
+          <h3>Je bent uitgenodigd voor de volgende agenda's:</h3>
+          <ul>
+            <li ng-repeat="share in shares">
+              <div ng-show="share.isOwner==1">
+                Je eigen agenda
+               </div>
+              <div ng-hide="share.isOwner==1" class="agendaOption">
+                <div>van: <h4>{{ share.ownerName}}</h4></div>
+                <div>titel: <strong>{{ share.title }}</strong></div>
+                <div>bericht: <span>{{ share.inviteMessage }}</span></div>
+              </div>
+              <button ng-click="activeShare(share.id)" class="btn btn-success userTypeA">Activeren</button>
+            </li>
+          </ul>
+          <p class="resultFeedback" ng-show="profileState=='ok'"><img src="images/found.png" class="resultIcon" />MiessAgenda gevonden</p>
+          <p class="resultFeedback" ng-show="profileState=='error'"><img src="images/not-found.png" class="resultIcon" />Controleer het emailadres</p>
+        </div>
+      </div>
+      <div class="col-sm-5 col-sm-push-1">
+        <div class="drawline always" style="border-color:#179103;">
+          <h2><!-- geen titel -->&nbsp;</h2>
+          <p>Wanneer je de uitnodiging voor deze agenda wilt accepteren, klik je op Activeren. Je komt dan direct in de agenda van degene die je heeft uitgenodigd.</p>
+ 
+		  <p>Let op! Met het activeren van je meekijkmogelijkheid in deze agenda,  ga je akkoord met de algemene voorwaarden en het privacy statement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+

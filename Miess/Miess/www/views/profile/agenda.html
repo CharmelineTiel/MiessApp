@@ -1,0 +1,16 @@
+<div class="row view ">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2" ng-repeat="agenda in model.agendas | filter: {isOwner:1}">
+		<h3>Eigen agenda: {{ agenda.title }}</h3>
+		Activeer
+	</div>
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2" ng-repeat="agenda in model.agendas | filter: {isOwner:0}">
+		<h2>Agenda gedeeld</h2>			
+		<h3>{{ agenda.title }}</h3>
+		<div class="view-label">eigenaar</div>
+		<div class="view-field">{{ agenda.name }}</div>
+		<div class="view-label">status</div>
+		<div class="view-label" ng-show="agenda.isUnknown==1">
+			
+		</div>
+	</div>
+</div>

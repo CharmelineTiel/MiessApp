@@ -1,0 +1,46 @@
+
+<!-- 
+	show the information system 
+-->
+
+<form name="infoForm" role="form" class="info">
+	<div id="id-message" class="container-fluid" ng-controller="InfoController">
+		<header id="id-header"  class="bar bar-nav row">
+		</header>
+		<nav id="id-nav"
+         style="top: {{ navTop() }}"
+         class="bar bar-tab"
+         ng-include="'views/layouts/header.html'"></nav>
+		
+		<div class="content">
+			<div class="col-sm-4 view-list info-list">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Informatie</h3>
+					</div>
+					<div class="panel-body">
+						<p>klik op het onderwerp voor meer informatie en uitleg</p>
+					</div>
+				</div>	
+				<div class="list" 
+					 ng-class="{selected : $index == activeIndex}" 
+					 ng-repeat="info in list track by $index" 
+					 ng-click="show($index)"					 
+					 >
+					<div id="id-info-{{ info.id}}" class="view-list-caption" >{{ info.caption }}</div>
+				</div>
+				<div class="list-end">
+        </div>
+			</div>
+			<div class="col-sm-1">
+				<div class="view-icon"></div>
+			</div>
+			<div class="col-sm-6">
+				<div ng-show="formState=='view'">
+          <div class="info-field" ng-include="'help/' + model.file"></div>
+				</div>
+			</div>			
+		</div>	
+	</div>	
+</form>	
+	

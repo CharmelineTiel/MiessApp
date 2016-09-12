@@ -1,0 +1,17 @@
+<div class="row view list-agenda">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1" ng-repeat="agenda in model.agendas | filter: {isOwner:0}">
+    <h2>Delen agenda</h2>
+    <div class="panel panel-default" ng-class="{'panel-success' : agenda.isActive==1 }">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ agenda.title }}</h3>
+      </div>
+      <div class="panel-body">
+        <p>Er is een uitnodiging van {{ model.invitation.name}} om de agenda te delen.</p>
+        <h3>Er zijn al {{ system.shareMax }} gebruikers van deze agenda</h3>
+        <p>
+          Bij deze versie van de MiessAgenda kan ieder groepje rondom 1 agenda maximaal bestaan uit {{ system.shareMax }} mensen. In de volgende versie kan je meer dan {{ system.shareMax }} mensen toevoegen aan 1 agenda.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

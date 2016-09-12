@@ -1,0 +1,203 @@
+<div class="col-sm-12 col-xs-12 ">
+	<div class="panel panel-default border-{{ model.typeId }} ">
+		<div class="panel-heading heading-{{ model.typeId }} "
+				 bs-popover="changeTypePopup"
+				 data-placement="bottom" 
+				 data-trigger="click"
+				 data-title="{{ changeTypePopup.title }}"
+				 data-content="&nbsp;{{ changeTypePopup.body }}"
+				 data-template="views/activity/changeType.html"
+				 >
+			{{ model.typeText }}
+		</div>
+
+		<div class="panel-body panel-fix " ><!-- spacing -->
+      <div class="row" ng-show="errorMessage">
+        <div class="form-group">
+          <div class="alert alert-warning">
+            {{ errorMessage }}
+          </div>
+         </div>
+      </div>
+
+      <div class="row ">
+				<div class="form-group" ng-class="{ 'has-error' : model.errors.title && !model.title.$pristine }">
+					<label class="control-label" for="title">Activiteit</label>
+					<div class="">
+						<input id="title"
+                   ng-model="model.title"
+                   placeholder="De activiteit in het kort"
+                   ng-readonly="model.masterActivity.id"
+                   class="form-control">
+						<p ng-show="model.errors.title" class="help-block">De activiteit moet ingevuld zijn</p> 
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">	
+				<div class="form-group">
+					<label class="control-label" for="description">Omschrijving</label>
+          <textarea id="description"
+                    name="description"
+                    data-ng-model="model.description"
+                    ng-readonly="model.masterActivity.id"
+                    placeholder="Beschrijf wat er gebeuren gaat. Deze tekst is te lezen voor de genodigden"
+                    class="form-control animate msd-elastic" >
+          </textarea>
+				</div>
+			</div>	
+
+			<div class="row clearfix">	
+				<div class="form-group" >
+					<div class="row clearfix">
+
+            <div ng-show="hasDateTime==0 || model.isAllDay==1">
+              <div class="col-xs-6">
+                <label class="control-label" for="startDate">Datum: </label>
+                <div ng-class="{ 'has-error' : model.errors.startDate && !model.startDate.$pristine }">
+                  <div class='input-group'>
+                    <input  id="startDate"
+                        type='text'
+                        data-autoclose="1"
+                        class="form-control"
+                        data-date-format="dd MMM yyyy"
+                        data-use-native="1"
+                        ng-readonly="model.masterActivity.id"
+                        bs-datepicker
+                        ng-model="model.startOn" />
+                    <span class="input-group-addon" ><span class="glyphicon glyphicon-calendar"></span></span>
+                  </div>
+                  <p ng-show="model.errors.startDate" class="help-block">De activiteit moet een datum hebben.</p>
+                </div>
+              </div>
+              <div class="col-xs-4" ng-hide="model.isAllDay">
+                <div class='input-group time'>
+                  <label class="control-label" for="startTime">Tijd</label>
+                  <div class='input-group date'>
+                    <input id="startTime"
+                           bs-timepicker
+                           data-time-type="string"
+                           data-autoclose="1"
+                           data-use-native="1"
+                           ng-readonly="model.masterActivity.id"
+                           data-length="5"
+                           data-timeformat="HH:mm"
+                           type='text'
+                           class="form-control"
+                           ng-model="model.startOn"
+                           step="5"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span> </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div ng-hide="hasDateTime==0 || model.isAllDay==1">
+              <div class="col-xs-9">
+                <div class='input-group time'>
+                  <label class="control-label" for="start-date-full">Datum / Tijd</label>
+                  <div class='input-group date'>
+                    <input id="start-date-full"
+                           type='datetime-local'
+                           ng-readonly="model.masterActivity.id"
+                           class="form-control"
+                           ng-model="model.startOn"
+                           step="300"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span> </div>
+                </div>
+              </div>
+            </div>
+					</div>	
+				</div>
+			</div>
+			<div class="row clearfix">	
+				<div class="form-group">
+					<div class="row clearfix">
+            <div ng-show="hasDateTime==0 || model.isAllDay==1">
+              <div class="col-xs-6">
+                <label class="control-label" for="tillDate">Tot en met</label>
+                <div class='input-group date'>
+                  <input id="tillDate"
+                          type='text'
+                          class="form-control"
+                          data-autoclose="1"
+                          data-date-format="dd MMM yyyy"
+                          data-use-native="1"
+                          ng-readonly="model.masterActivity.id"
+                          bs-datepicker
+                          ng-model="model.endOn" />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+              </div>
+              <div class="col-xs-4" ng-hide="model.isAllDay">
+                <div class='input-group time'>
+                  <label class="control-label" for="tillTime">Tijd</label>
+                  <div class='input-group date'>
+                    <input id="tillTime"
+                            bs-timepicker
+                            data-autoclose="1"
+                            data-time-type="string"
+                            data-use-native="1"
+                            data-length="5"
+                            data-timeformat="HH:mm"
+                            type='text'
+                            ng-readonly="model.masterActivity.id"
+                            class="form-control"
+                            ng-model="model.endOn"
+                            step="5"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-hide="hasDateTime==0 || model.isAllDay==1">
+              <div class="col-xs-9">
+                <div class='input-group time'>
+                  <label class="control-label" for="end-date-full">Tot datum / tijd</label>
+                  <div class='input-group date'>
+                    <input id="end-date-full"
+                           type='datetime-local'
+                           class="form-control"
+                           ng-model="model.endOn"
+                           ng-readonly="model.masterActivity.id"
+                           step="300"
+                           style="width:100%"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span> </div>
+                </div>
+              </div>
+            </div>
+                        <div class="col-xs-12">
+                            <label class="control-label" for="wholeDay">Hele dag</label><br>
+                            <label class="checkbox-inline">
+                                <input id="wholeDay"
+                                       type="checkbox"
+                                       ng-readonly="model.masterActivity.id"
+                                       ng-model="model.isAllDay"
+                                       ng-checked="model.isAllDay==1">
+                            </label>
+                        </div>
+          </div>
+				</div>	
+			</div>
+			<div class="row clearfix">	
+				<div class="form-group">
+					<label class="control-label" for="location">Locatie</label>
+					<textarea id="location"
+                    class="form-control animate msd-elastic"
+                    ng-readonly="model.masterActivity.id"
+                    data-ng-model="model.location"></textarea>
+
+				</div>
+			</div>
+
+			<div class="row clearfix">	
+				<div class="form-group">
+					<label class="control-label" for="extra-info">Bijzonderheden</label>
+					<textarea id="extra-info"
+                    class="form-control animate msd-elastic"
+                    ng-readonly="model.masterActivity.id"
+                    data-ng-model="model.extraInfo"></textarea>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>	

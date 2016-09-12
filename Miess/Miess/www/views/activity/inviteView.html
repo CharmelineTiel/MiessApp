@@ -1,0 +1,28 @@
+<!--
+	List the invitations send
+-->
+<div class="invited">
+  <h2>uitnodigingen <span class="pull-right"><img src="images/share.png" /></span></h2>
+  <div class="msg">
+    <div class="subject" ng-hide="model.inviteSubject==model.title">{{ model.inviteSubject }}</div>
+    <div ng-show="model.inviteMessage">
+      <div class="label">bericht:</div>
+      <div class="body" ng-bind-html="model.inviteMessage |nl2br">xx</div>
+    </div>
+    <div class="label" ng-show="model.inviteSendDate!=''">verstuurd: {{ formatDate(model.inviteSendDate) }}</div>
+  </div>
+  <div class="list" ng-repeat="share in model.recipients |filter: {isAccepted:1}">
+    <h4 ng-show="$first">Ontvangers die mee gaan:</h4>
+    <div class="user">{{ share.name}}</div>
+  </div>
+  <div class="list" ng-repeat="share in model.recipients |filter: {isUnknown:1}">
+    <h4 ng-show="$first">Nog geen reactie ontvangen:</h4>
+    <div class="user">{{ share.name}}</div>
+  </div>
+
+  <div class="list" ng-repeat="share in model.recipients |filter: {isDenied:1}">
+    <h4 ng-show="$first">Afmeldingen:</h4>
+    <div class="user">{{ share.name}}</div>
+  </div>
+</div>
+

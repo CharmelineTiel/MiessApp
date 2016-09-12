@@ -1,0 +1,35 @@
+<!-- popup to select an agenda -->
+
+<div class="modal fade" id="selectAgenda" tabindex="-1" role="dialog" aria-labelledby="selectAgendaLable" aria-hidden="true" ng-controller="AgendaController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="pull-right btn btn-primary" data-dismiss="modal" aria-hidden="true">annuleer</button>
+        <h4 class="modal-title" id="myModalLabel">Selecteer agenda</h4>
+      </div>
+      <div class="modal-body">
+  
+				<div class="row" ng-repeat='current in agendas'>
+					<div class="well" ng-class="{ 'xxx' : agenda.id == current.id }">
+						<!-- four states: owner, invited, accepted, denied (block is not show) -->
+						<h4 ng-show='current.isOwner == 1' class="well">Mijn agenda</h4>
+						<h4 ng-show='current.isAccepted == 1 && current.isOwner == 0' class="well">Aangenomen</h4>
+						<h4 ng-show='current.isDenied == 1' class="well">Afgewezen</h4>
+						<div ng-hide='current.isOwner == 1 || current.isAccepted == 1 || current.isDenied == 1'>
+							<h4 ng-show='current.isDenied' class="well" >Uitgenodigd</h4>
+							<button ng-click='acceptAgenda(current.id)' class='btn btn-primary'>Accepteren</button>
+						</div>	
+						<dl>
+							<dd ng-hide="{{ current.name == null }}">gebruikers naam</dd>
+							<dt ng-hide="{{ current.name == null }}"> {{ current.name }} </dt>
+						</dl>
+						<div ng-show="current.isAccepted == 1 && agenda.id != current.id">
+							<button ng-click='activateAgenda(current.id)' class='btn btn-primary'>Activeren</button>
+						</div>
+					</div>			
+				</div>				
+				
+      </div>
+    </div>
+  </div>
+</div>
