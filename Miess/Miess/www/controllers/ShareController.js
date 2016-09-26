@@ -135,4 +135,9 @@ agendaApp.controller('ShareController', ['$scope', 'Share', '$routeParams', 'Use
 		$scope.formState = 'view'; // first reset state
 		Share.list($scope);	
 	};
+	$scope.remove = function (id) {
+
+	    $scope.model = $scope.list[id];
+	    Share.remove($scope.model.id);
+    }
 }]);

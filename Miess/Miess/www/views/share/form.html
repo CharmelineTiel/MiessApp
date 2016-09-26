@@ -40,7 +40,7 @@
 		</ul>
 		<p ng-show="model.errors.groupId" class="help-block">{{ model.errors.groupId}}</p>
 	</div>
-
+    {{model.id}}
 	<!-- Body Textarea -->
 	<div class="form-group">
 		<label class="form-label" for="id-inviteMessage">bericht bij de uitnodiging</label>
@@ -79,6 +79,5 @@
       deze gebruiker heeft <b>geen</b> toegang meer tot de agenda
     </label>
   </div>
-
-
+    <button class="btn btn-danger btn-lg" ng-click="remove(model.id)">Verwijderen uit agenda</button>
 </div>	

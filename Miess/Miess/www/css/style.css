@@ -939,7 +939,7 @@ a.list-group-item.active:focus{
     margin-right: 0; 
 }
 .navmenu{
-    width: 200px;
+    width: 300px;
 }
 @media (min-width: 768px) {
     .navbar-toggle {
@@ -952,28 +952,47 @@ a.list-group-item.active:focus{
 .agenda-title{
     margin-top: 10px;
 }
-/*Floating button + activities */
+/*Floating buttons */
 #floating-button{
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
+  margin: 20px auto 0;
+  display: block;
   border-radius: 50%;
-  background: #179103;
-  border-color:#179103;
-  position: fixed;
+  position: relative;
   bottom: 80px;
   right: 35px;
   cursor: pointer;
   box-shadow: 0px 2px 2px #999;
 }
-#container-floating{
-  position: fixed;
-  width: 70px;
-  height: 70px;
-  bottom: 30px;
-  right: 10px;
-  z-index: 50;
+.floating-button-type{
+  margin: auto 0;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: 2px 0;
 }
-.plus{
+.add-button, .edit-button{
+  background: #179103;
+  border-color:#179103;
+}
+.remove-button{
+  background: #d44148;
+  border-color:#d44148;
+}
+.activity-panel{
+  bottom: 130px;
+  position: fixed;
+  margin: 1em;
+  right: 0px;
+}
+#container-floating{
+  bottom: 10px;
+  position: fixed;
+  margin: 1em;
+  right: -10px;
+}
+.plus, .remove, .edit{
   color: white;
   position: absolute;
   top: 0;
@@ -984,14 +1003,15 @@ a.list-group-item.active:focus{
   text-align: center;
   padding: 0;
   margin: 0;
-  line-height: 50px;
-  font-size: 38px;
-  font-family: 'Roboto';
-  font-weight: 300;
+  line-height: 55px;
+  font-size: 20px;
   animation: plus-out 0.3s;
   transition: all 0.3s;
 }
-
+.plus{
+    font-family: "roboto";
+    font-size: 38px;
+}
 /*Add new activity form*/
 .input-group .form-control {
      position: static; 

@@ -22,7 +22,7 @@
 agendaApp.controller('ActiveShareController', ['$scope', '$rootScope', '$log', 'Agenda',
                     function($scope, $rootScope, $log, Agenda) {
 
-	$scope.menu = 'chose';
+	$scope.menu = 'choose';
 	$scope.active = 0;
 	$scope.list = {};
 	$scope.formState = 'none';	// nothing to show

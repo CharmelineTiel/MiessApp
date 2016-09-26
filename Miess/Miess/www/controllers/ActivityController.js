@@ -121,17 +121,17 @@ agendaApp.controller('ActivityController', ['$scope', '$routeParams', 'Activity'
    *
    * @param  userId the id of the user to add /remove
    */
-  /*
-   $scope.invite = function(userId) {
-   var idx = $scope.model.invite.indexOf(userId);
-   if (idx > -1) {
-   $scope.model.invite.splice(idx,1);
-   } else {
-   $scope.model.invite.push(userId);
-   }
-   $log.log('invitation to', $scope.model.invite);
-   };
-   */
+  
+   //$scope.invite = function(userId) {
+   //var idx = $scope.model.invite.indexOf(userId);
+   //if (idx > -1) {
+   //$scope.model.invite.splice(idx,1);
+   //} else {
+   //$scope.model.invite.push(userId);
+   //}
+   //$log.log('invitation to', $scope.model.invite);
+   //};
+   
   /**
    * called when the user clicks on a reciever
    *
@@ -181,12 +181,20 @@ agendaApp.controller('ActivityController', ['$scope', '$routeParams', 'Activity'
     $scope.model.inviteIds = $scope.recipients.join(',');
     $scope.activityForm.$setDirty();
   };
+/**
+ * open this activty
+ */
+  $scope.edit = function () {
 
+      if ($scope.model && $scope.model.id > 0) {
+          Server.open('/activity/' + $scope.model.id);
+      }
+  };
   /**
-   * delete this activty
+   * delete this activity
    */
   $scope.del = function () {
-     Activity.del($scope.model.id, '/agenda');
+          Activity.del($scope.model.id, '/agenda');
   };
   /**
    * restores the agenda not saving the changes

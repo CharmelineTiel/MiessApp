@@ -52,7 +52,7 @@
 					<div class="panel-body">
 						<p>klik op een naam om de gegevens te bekijken of aan te passen.</p>
 					</div>
-				</div>	
+				</div>
 				<div class="list" 
 					 ng-class="{selected : $index == activeIndex}" 
 					 ng-repeat="share in list track by $index" 
@@ -66,6 +66,7 @@
               <span class="glyphicon glyphicon-remove" ng-show="share.isDenied==1"></span>
             </span>
           </div>
+                   
 				</div>
 				<div class="list-end"></div>
 			</div>

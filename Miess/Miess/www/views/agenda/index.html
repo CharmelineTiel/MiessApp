@@ -1,10 +1,10 @@
 <!--
   Agenda definition
 -->
-<div id="id-agenda"  ng-controller="AgendaController">
+<div id="id-agenda" ng-controller="AgendaController">
     <div id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-        <div class="col-md-12 agenda-title" ng-controller="ProfileController">
-            <h3> {{ model.agendaTitle }}</h3>
+        <div class="col-md-12 agenda-title" ng-controller="ShareController" ng-show="agenda.isActive==1">
+            <h3>{{ agenda.title }}</h3>
         </div> 
         <div class="list-group">
             <a class="list-group-item"
@@ -23,36 +23,58 @@
                 <span class="glyphicon glyphicon-th">&nbsp;Maand</span>
             </a>
             <br />
-            <!--<a class="list-group-item"
-               ng-click="today()">
-                <span class="glyphicon glyphicon-th">&nbsp;Vandaag</span>
-            </a>-->
         </div>
-        <div class="col-md-12">
-            <h3>Agenda's</h3>
-            <p>coming soon..</p>
-        </div>
-            <!--<div class="row" ng-repeat='current in agendas'>
-            <div class="well" ng-class="{ 'xxx' : agenda.id == current.id }">
-                 four states: owner, invited, accepted, denied (block is not show)
-                <h4 ng-show='current.isOwner == 1' class="well">Mijn agenda</h4>
-                <h4 ng-show='current.isAccepted == 1 && current.isOwner == 0' class="well">Aangenomen</h4>
-                <h4 ng-show='current.isDenied == 1' class="well">Afgewezen</h4>
-                <div ng-hide='current.isOwner == 1 || current.isAccepted == 1 || current.isDenied == 1'>
-                    <h4 ng-show='current.isDenied' class="well" >Uitgenodigd</h4>
-                    <button ng-click='acceptAgenda(current.id)' class='btn btn-primary'>Accepteren</button>
-                </div>
-                <dl>
-                    <dd ng-hide="{{ //current.name == null }}">gebruikers naam</dd>
-                    <dt ng-hide="{{ //current.name == null }}"> {{ //current.name }} </dt>
-                </dl>
-                <div ng-show="current.isAccepted == 1 && agenda.id != current.id">
-                    <button ng-click='activateAgenda(current.id)' class='btn btn-primary'>Activeren</button>
-                </div>
-            </div>
-        </div>-->
-        </div>
+        <div class="col-md-12" ng-controller="ProfileController">
+              <!--possibly a seperate view for the part below-->
+             
 
+ 
+
+            <div class="list-group">
+                <h3>Mijn agenda</h3>
+                <div class="list-group-item disabled" ng-repeat="agenda in model.agendas | filter: {isOwner:1}">                                               
+                            <p>{{ agenda.title }}</p>
+                            <button class="btn btn-success"
+                                    ng-hide="agenda.isActive==1"
+                                    ng-click="activateAgenda(agenda.shareId)">
+                                Activeer
+                            </button>
+                            <button class="btn btn-primary disabled" ng-show="agenda.isActive==1">Actief</button>                                 
+                </div><br />
+
+
+                <h3>Agenda's gedeeld met mij</h3>
+                <div class="list-group-item" ng-repeat="agenda in model.agendas | filter: {isOwner:0}">
+                            <p>{{ agenda.title }}</p>            
+                            <div ng-show="agenda.isAccepted">
+                                <!--<p>Je gebruikersnaam binnen deze agenda is <b>{{ //agenda.name}}</b></p>-->
+                                <button class="btn btn-success" ng-hide="agenda.isActive==1" ng-click="activateAgenda(agenda.shareId)">Activeer</button>
+                                <!--<button class="btn btn-danger pull-right" ng-hide="agenda.isActive==1" ng-click="removeAgenda(agenda.shareId)">Verwijder</button>-->
+                            </div>
+                            <div ng-show="agenda.isDenied || agenda.isBlocked">
+                                Deze agenda is niet actief. Neem contact op met <b>{{ agenda.ownerName }}</b> om hier gebruik van te kunnen maken.
+                            </div>
+                            <div ng-show="agenda.isAccepted==0 && agenda.isDenied==0 && canAccept">
+                                <p>
+                                    Deze agenda is nieuw en wordt door <b>{{ agenda.ownerName }}</b> met je gedeeld. <br />
+                                    Je naam in de agenda is <b>{{ agenda.name }}</b>.
+                                </p>
+                                <p>
+                                    Wil je de uitnodiging accepteren?<br />
+                                    <button class="btn btn-success btn-sm" ng-click="acceptShare(agenda.shareId)">Accepteer de uitnodiging</button>
+                                    <button class="btn btn-danger btn-sm" ng-click="denyShare(agenda.shareId)">Uitnodiging afwijzen</button>
+                                </p>
+                            </div>
+                            <button class="btn btn-primary disabled btn-sm" ng-show="agenda.isActive==1">Actief</button>                  
+                </div>
+
+            </div>
+
+
+
+
+        </div>         
+    </div>
 	<header id="id-header"  class="bar bar-nav row">
         <div class="col-xs-4">
             <button class="btn" ng-click="previous()">
@@ -80,18 +102,17 @@
 
         <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()">
                 <div ng-include="'views/agenda/fullCalendar.html'"></div>
-                <div id="id-agenda-fixed-panel" class="scroll-box col-sm-offset-9 col-sm-3 col-xs-offset-7 col-xs-5 " style="position: fixed">
-                    <div id="create" ng-show="formState=='create'" ng-include="'views/agenda/new.html'">
-                    </div>
-                </div>
                 <div id="container-floating">
+               
+                        <div ng-show="formState=='create'" ng-include="'views/agenda/new.html'">               
+                    </div>
                             <div id="floating-button"
+                                 class="add-button"
                                     ng-click="add()"
                                     ng-show="agenda.isWritable==1">
                                 <span class="plus glyphicon glyphicon-plus"></span>
                             </div>
                 </div>
-            <!--<div ng-show="formState=='view'" ng-include="'views/agenda/view.html'">-->
             </div>
         </div>
 

@@ -6,15 +6,15 @@
 				<span class="btn pull-left" ng-click="cancel()" ng-show="agenda.isWritable==1 || showMessage ==1">
 					annuleer
 				</span>
-				<span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1" class="btn pull-right" ng-click="del()">
+				<!--<span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1" class="btn pull-right" ng-click="del()">
 					verwijder <span class="glyphicon glyphicon-remove"></span>
-				</span>				
-
+				</span>-->				
 				</div>	
 				<div class="col-xs-5">
           <span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1"
                 class="btn pull-right"
-                ng-click="update()">
+                ng-click="update()"
+                ng-hide="(formState=='invite') && agenda.isWritable==1 && model.inviteIds">
             opslaan
           </span>
 
@@ -29,7 +29,7 @@
                 ng-click="formState='invite';">
             uitnodigen
           </span>
-          <span ng-show="0 && (formState=='edit' && model.inviteIsSend==1) && agenda.isWritable==1"
+          <span ng-show="0 && (formState=='edit' || formState == 'invite' ) && model.inviteIsSend==1 && agenda.isWritable==1"
                 class="btn pull-right"
                 ng-click="editInvite()">
             herinnering
@@ -81,6 +81,15 @@
             </div>
 					</div>
 				</div>
+
+                <div id="container-floating">
+                    <div id="floating-button"
+                         class="remove-button"
+                         ng-click="del()"
+                         ng-show="(formState=='edit' || formState == 'invite') && agenda.isWritable==1">                         
+                        <span class="remove glyphicon glyphicon-trash"></span>
+                    </div>
+                </div>
 			</div>	
 		</fieldset>			
 	</form>		

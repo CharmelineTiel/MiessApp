@@ -1,15 +1,15 @@
 <!--
  show the content a share
 -->
-<div class="row view">
+<div class="view">
 	<h2>Agenda deelnemer</h2>	
 	
 	<div class="view-label">naam</div>
 	<div class="share-field">{{ model.name }}</div>
 	
-	<div class="view-label">email</div>
+	<div class="view-label">email (privé)</div>
 	<div class="share-field">{{ model.publicEmail }}</div>
-  <div class="share-field" ng-show="agenda.isAdmin && model.publicEmail != model.email"><i>(privé: {{ model.email }} </i></div>
+  <div class="share-field" ng-show="agenda.isAdmin && model.publicEmail != model.email"><i> {{ model.email }} </i></div>
   <div ng-show="model.publicTelephone.length">
     <div class="view-label">telefoon</div>
     <div class="share-field">{{ model.publicTelephone }}</div>

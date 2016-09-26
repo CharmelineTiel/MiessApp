@@ -151,7 +151,8 @@ agendaApp.controller('MessageController', ['$scope', '$rootScope', 'Message', '$
 //			activateEdit();
       $scope.formState = 'edit';
     } else {
-      $scope.formState = 'view';
+        $scope.formState = 'view';
+
     }
 
     // marking message as read

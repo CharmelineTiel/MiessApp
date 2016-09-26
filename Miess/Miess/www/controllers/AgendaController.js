@@ -77,7 +77,7 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
 
     $scope.model = {
       title: event.title,
-      //description: event.description,
+      description: event.description,
       period: event.period,
       allDay: event.allDay,
       typeId: event.typeId,
@@ -112,11 +112,11 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
   };
 
 
-  $scope.edit = function () {
-    if ($scope.model && $scope.model.id > 0) {
-      Server.open('/activity/' + $scope.model.id);
-    }
-  };
+  //$scope.edit = function () {
+  //  if ($scope.model && $scope.model.id > 0) {
+  //    Server.open('/activity/' + $scope.model.id);
+  //  }
+  //};
 
   $scope.goBack = function () {
       window.history.back();

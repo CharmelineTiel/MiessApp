@@ -8,18 +8,18 @@
     <div id="id-message" class="container-fluid">
       <header id="id-header" class="bar bar-nav row">
         <div class="col-xs-4 col-sm-3">
-          <span class="btn" ng-show="formState=='edit' || formState=='save'" ng-click="cancel()">annuleer</span>
+          <span class="btn" ng-show="formState=='edit' || formState=='save'" ng-click="cancel()">Annuleer</span>
         </div>
         <div class="col-sm-9">
-          <button class="btn pull-right"  ng-click="edit()" ng-show="formState == 'view'">
+          <!--<button class="btn pull-right"  ng-click="edit()" ng-show="formState == 'view'">
             <span class="hidden-xs">wijzig </span><span class="glyphicon glyphicon-pencil"></span>
-          </button>
+          </button>-->
 
           <button class="btn pull-right" ng-click="save()" ng-show="formState=='edit' || formState =='save'">
-            <span class="hidden-xs">bewaar</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
-          </button>
+          Opslaan
+            </button>
           <button class="btn pull-right" ng-click="changePassword('show')" ng-show="formState=='view'">
-            <span class="hidden-xs">wijzig wachtwoord</span><span class="visible-xs"><span class="glyphicon glyphicon-plane"></span></span>
+            Wijzig wachtwoord &nbsp;<span class="glyphicon glyphicon-lock"></span>
           </button>
         </div>
       </header>
@@ -31,20 +31,20 @@
       </nav>
 
       <div class="content" ng-show="model.isTempAccount == 0">
-        <div class="col-xs-5 col-sm-4 view-list profile-list" data-ng-disabled="inEdit" ng-class="{'div-disabled' :inEdit}">
+        <div class="col-xs-12 col-sm-4 view-list profile-list" data-ng-disabled="inEdit" ng-class="{'div-disabled' :inEdit}">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Instellingen</h3>
+              <h3 class="panel-title">&nbsp; &nbsp; &nbsp;&nbsp;Instellingen</h3>
             </div>
             <div class="panel-body">
               <p>Algemene instelling van het agendaprofiel.</p>
             </div>
           </div>
           <div class="list" ng-class="{selected : formState=='view' || formState=='edit'}">
-            <div class="view-list-caption" ng-click="formState='view'">mijn agenda profiel</div>
+            <div class="view-list-caption" ng-click="formState='view'">Mijn agenda profiel</div>
           </div>
           <div class="list" ng-class="{selected : formState=='logout'}">
-            <div class="view-list-caption" ng-click="formState='logout'">afmelden</div>
+            <div class="view-list-caption" ng-click="formState='logout'">Afmelden</div>
           </div>
           <div class="list"  ng-class="{selected : formState=='debug'}">
             <div class="view-list-caption" ng-click="formState='debug'" ng-show="isDebug"> debug informatie</div>
@@ -55,7 +55,7 @@
         <div class="hidden-sm col-md-1">
           <div class="view-icon"></div>
         </div>
-        <div class="col-xs-7 col-sm-7">
+        <div class="col-xs-12 col-sm-6">
           <div ng-show="errorMessage">
             <div class="panel panel-danger">
               <div class="panel-heading">
@@ -149,4 +149,12 @@
     </div>
   </div>
   
+    <div id="container-floating">
+        <div id="floating-button"
+             class="edit-button"
+             ng-click="edit()"
+             ng-show="formState == 'view'">
+            <span class="edit glyphicon glyphicon-pencil"></span>
+        </div>
+    </div>
 </div>

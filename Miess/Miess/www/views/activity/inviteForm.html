@@ -56,9 +56,10 @@
         <div ng-show="recipients.indexOf(user.id.toString()) >= 0"
              class="marker id-user-{{user.id}} glyphicon glyphicon-ok-circle color-accept"></div>
         {{ user.name}}
-        <span class="pull-right" ng-show="findRecipient(user.id).isAccepted==1">geaccepteerd</span>
-        <span class="pull-right" ng-show="findRecipient(user.id).isDenied==1">afgewezen</span>
+        <!--<span class="pull-right" ng-show="findRecipient(user.id).isAccepted==1">geaccepteerd</span>
+        <span class="pull-right" ng-show="findRecipient(user.id).isDenied==1">afgewezen</span>-->
       </div>
     </div>
   </div>
 </div>
+

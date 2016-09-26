@@ -222,7 +222,6 @@ body nav {
    width: 100%;}
 /* message related styles */
 .bar .msg-filter .input-group {
-  margin-left: 20px;
   border-radius: 6px;
 }
 .bar .msg-filter .input-group input {
@@ -415,7 +414,7 @@ div.miess_act.groep1, div.miess_act.groep2, div.miess_act.groep3,div.miess_act.g
 	height: 40px;
 }
 #id-agenda-fixed-panel {
-	top: 100px;
+	top: 190px;
     padding-left: 20px;
 }
 .input-group input, .input-group textarea {
@@ -447,8 +446,7 @@ div.miess_act.groep1, div.miess_act.groep2, div.miess_act.groep3,div.miess_act.g
 }
 /** errors in ratchet */
 .bar .input-group {
-	margin-top: 4px;
-	margin-left:6px;
+    margin-top: 4px;
 }
 ul {
   color: #777;
@@ -1127,14 +1125,14 @@ ul {
 
 /* the help system */
 .info-list .panel {
-	background-color: #dfd9d9;
+	background-color: #e7e7dc;
 }
 .info-list .panel .panel-heading {
 	color : #198fca;
-	background-color: #dfd9d9;
+	background-color: #e7e7dc;
 }
 .info-list .list {
-	background-color: #dfd9d9;
+	background-color: #e7e7dc;
 	color : #198fca;
 }
 .info-list .list.selected {
@@ -1143,7 +1141,7 @@ ul {
 }
 .info-list .list-end {
 	color : #198fca;
-	background-color: #dfd9d9;
+	background-color: #e7e7dc;
   padding-left: 28px;
   padding-top: 5px;
   font-size: 80%;
@@ -1281,3 +1279,7 @@ ul {
   border: 1px solid #a94442;
 }
 
+/* Calendar */
+.fc-widget-content {
+  
+}
