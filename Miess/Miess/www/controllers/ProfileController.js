@@ -148,16 +148,15 @@ agendaApp.controller('ProfileController', ['$scope', 'Profile', 'Setup', '$log',
     Profile.update($scope, '/profile/settings');
   };
 
-
   $scope.activateAgenda = function (shareId) {
-    Share.activate(shareId, $scope, 'switchTo');
+      Share.activate(shareId, $scope, 'switchTo');
+      $('#calendar').fullCalendar('refetchEvents');
   };
   $scope.removeAgenda = function(shareId) {
     if (confirm('Wil je deze agenda verwijderen. Dit kan NIET ongedaan gemaakt worden.')) {
       Share.remove(shareId, $scope, 'switchTo');
     }
   };
-
   $scope.acceptShare = function (shareId) {
     $scope.showInvitation = false;
     Share.accept(shareId, $scope);

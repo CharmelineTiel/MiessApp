@@ -16,22 +16,20 @@
          ng-hide="keyboardShown"
          ng-include="'views/layouts/header.html'">
     </nav>
-    <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()">
-        <div class="activity-view"  ng-controller="ActivityController">
-
+    <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()" ng-controller="ActivityController">
+        <div class="activity-view" >
             <div class="act-info panel-group">
                 <div class="panel panel-default border-{{model.typeId}}">
                     <div class="panel-heading heading-{{model.typeId}}">
                         {{ model.typeText }}
                     </div>
                     
-                    <div class="panel-body activity-color-{{ model.typeId }}">
-                        <div ng-controller="ShareController">
+                    <div class="panel-body activity-color-{{ model.typeId }}">      
                             <h4>{{ agenda.title }}</h4>
-                            <p>Eigenaar van agenda: {{ agenda.ownerName }}</p>
-                        </div>
+                        <div ng-controller="ShareController">
+                            <p>Uitgenodigd door: {{ share.id }}</p>
+                        </div>  
                         <div class="act-label" style="position:relative;height: 29px;">
-                            <span class="btn btn-default pull-right" ng-click="edit()">Bewerken</span>
                             <div style="position: absolute; bottom: 0; left: 0;">Tijd</div>
                         </div>
                         <div class="period">{{ model.period }}</div>
@@ -58,6 +56,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="container-floating">
+            <div id="floating-button"
+                 class="edit-button"
+                 ng-click="edit()"
+                 ng-show="agenda.isWritable==1">
+                <span class="edit glyphicon glyphicon-pencil"></span>
             </div>
         </div>
     </div>

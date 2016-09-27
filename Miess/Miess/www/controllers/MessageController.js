@@ -166,6 +166,7 @@ agendaApp.controller('MessageController', ['$scope', '$rootScope', 'Message', '$
    * @param id the id of the Message
    */
   $scope.showById = function (id) {
+    
     Message.get($scope, id);
     $scope.activeIndex = -1; // none
     Message.markRead($scope, 1, id);

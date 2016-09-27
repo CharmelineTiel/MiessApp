@@ -939,7 +939,7 @@ a.list-group-item.active:focus{
     margin-right: 0; 
 }
 .navmenu{
-    width: 300px;
+    width: 250px;
 }
 @media (min-width: 768px) {
     .navbar-toggle {
