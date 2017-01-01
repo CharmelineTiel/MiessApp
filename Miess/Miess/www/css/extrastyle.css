@@ -125,8 +125,8 @@ body nav {
     .nav-profile,
     .nav-profile.active,
     .nav-profile:hover{
-        width: 40px;
-        background-size:40px;
+        width: 35px;
+        background-size:35px;
     }
 }
 
@@ -729,7 +729,7 @@ ul {
 }
 /* invitation to the right */
 .activity .invite, .activity .panel-heading {
-	/*background-color: #c2e2f4;*/
+	background-color: #c2e2f4;
 }
 .panel-default>.panel-heading {
     color: #333;
@@ -892,16 +892,12 @@ ul {
 
 
 /* new activity in agenda */
-.activity-panel .caption {
+.change-activity-panel .caption {
     padding: 4px 10px;
     color: white;
     border-radius: 7px;
     font-size: 11px;
-    max-width: 110px;
     margin-bottom: 4px;
-}
-.activity-panel .item {
-	border-radius: 12px;
 }
 
 #calendar .fc-event-inner {
@@ -1027,6 +1023,9 @@ ul {
 }
 .view h2 {
 	font-size: 24px;
+}
+.view, .share-icon{
+    margin-top: 30px;
 }
 
 

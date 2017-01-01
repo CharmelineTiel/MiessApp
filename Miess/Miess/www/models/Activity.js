@@ -51,7 +51,8 @@ agendaApp.factory('Activity',function($log, $rootScope, $http, Server) {
   		$rootScope.resetState();
 			context[varName] = {
 				typeId		: typeId,
-				isAllDay	: 0,	
+				isAllDay	: 0,
+                businessHours : 0,
 				startOn   : $rootScope.activeDate(),
 				duration	: $rootScope.activeDuration,
         endOn     : moment($rootScope.activeDate()).add('seconds',$rootScope.activeDuration).toDate(),

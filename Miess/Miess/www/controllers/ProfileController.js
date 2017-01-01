@@ -123,8 +123,14 @@ agendaApp.controller('ProfileController', ['$scope', 'Profile', 'Setup', '$log',
     $scope.formState = 'save';
     Profile.update($scope);
   };
-  $scope.logout = function () {
-    Profile.logout(false, $scope);
+  $scope.logout = function (action) {
+      if (action == 'show') {
+          $('#logOut').modal('show');
+      } else if (action == 'logout') {
+          $('#logOut').modal('hide');
+          Profile.logout(false, $scope);
+      }
+
   };
 
   $scope.testWait = function () {
@@ -182,20 +188,15 @@ agendaApp.controller('ProfileController', ['$scope', 'Profile', 'Setup', '$log',
     }
   };
 
-  $scope.changePassword = function (action) {
-    if (action == 'show') {
-      $('#changePassword').modal('show');
-    } else if (action == 'change') {
+  $scope.changePassword = function () {
+
       if ($scope.dialog.password != $scope.dialog.passwordRepeat) {
         $scope.infoMessage = 'De wachtwoorden zijn niet gelijk';
       } else if ($scope.dialog.password.length < 4) {
         $scope.infoMessage = 'Het wachtwoord is te kort';
       } else {
-        $('#changePassword').modal('hide');
         Profile.changePassword($scope, $scope.dialog.password);
       }
     }
-
-  }
 
 }]);

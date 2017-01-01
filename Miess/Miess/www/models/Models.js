@@ -116,7 +116,8 @@ agendaApp.factory('Activity', function($http, Server, $rootScope, $log)
 				'start_time' : $rootScope.activeTime,
 				'end_date'	 : $rootScope.activeDate,
 				'end_time'	 : moment($rootScope.activeDate+' '+$rootScope.activeTime).add('seconds', $rootScope.activeDuration).format('HH:MM'),
-				'duration'	 : $rootScope.activeDuration						
+				'duration'   : $rootScope.activeDuration,
+                'businessHours' : 0
 			};
 			durationWatch($scope);
 			$rootScope.isWaiting = false;

@@ -325,6 +325,7 @@ agendaApp.controller('MessageController', ['$scope', '$rootScope', 'Message', '$
   $scope.openMessage = function (id) {
     $log.log('open', id);
     Message.get($scope, id);
+    $sever.open('/msg/' + id);
   };
   /**
    * translate the status code to a readable text

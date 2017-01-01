@@ -9,17 +9,20 @@
       <header id="id-header" class="bar bar-nav row">
         <div class="col-xs-4 col-sm-3">
           <span class="btn" ng-show="formState=='edit' || formState=='save'" ng-click="cancel()">Annuleer</span>
+            <span class="btn" ng-click="cancel()" ng-show="formState=='changePassword'">Annuleer</span>
         </div>
         <div class="col-sm-9">
           <!--<button class="btn pull-right"  ng-click="edit()" ng-show="formState == 'view'">
             <span class="hidden-xs">wijzig </span><span class="glyphicon glyphicon-pencil"></span>
           </button>-->
-
+            <button class="btn pull-right" ng-click="changePassword()"  ng-show="formState=='changePassword'">
+                Opslaan
+            </button>
           <button class="btn pull-right" ng-click="save()" ng-show="formState=='edit' || formState =='save'">
           Opslaan
             </button>
-          <button class="btn pull-right" ng-click="changePassword('show')" ng-show="formState=='view'">
-            Wijzig wachtwoord &nbsp;<span class="glyphicon glyphicon-lock"></span>
+          <button class="btn pull-right" ng-click="logout('show')" ng-show="formState=='view'">
+           Afmelden 
           </button>
         </div>
       </header>
@@ -43,8 +46,8 @@
           <div class="list" ng-class="{selected : formState=='view' || formState=='edit'}">
             <div class="view-list-caption" ng-click="formState='view'">Mijn agenda profiel</div>
           </div>
-          <div class="list" ng-class="{selected : formState=='logout'}">
-            <div class="view-list-caption" ng-click="formState='logout'">Afmelden</div>
+          <div class="list" ng-class="{selected : formState=='changePassword'}">
+            <div class="view-list-caption" ng-click="formState='changePassword'">Wachtwoord wijzigen</div>
           </div>
           <div class="list"  ng-class="{selected : formState=='debug'}">
             <div class="view-list-caption" ng-click="formState='debug'" ng-show="isDebug"> debug informatie</div>
@@ -73,8 +76,8 @@
           <div ng-show="formState=='edit' || formState=='save'">
             <div ng-include="'views/profile/edit.html'"></div>
           </div>
-          <div ng-show="formState=='logout'">
-            <div ng-include="'views/profile/logout.html'"></div>
+          <div ng-show="formState=='changePassword'">
+            <div ng-include="'views/profile/changePassword.html'"></div>
           </div>
 
           <div ng-show="formState=='debug'">
@@ -86,53 +89,17 @@
   </form>
 
 
-  <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logOut" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <form name="formPassword" >
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Wijzigen van het wachtwoord</h4>
+            <h4 class="modal-title" id="myModalLabel">Afmelden</h4>
           </div>
           <div class="modal-body">
-            <div class="alert alert-success" ng-show="infoMessage">
-              {{ infoMessage }}
-            </div>
-            <p>
-              Als je je wachtwoord wilt wijzigen, vul dan hieronder je nieuwe wachtwoord in.
-              Een goed wachtwoord heeft naast letters en hoofdletters ook speciale tekens of cijfers.<br />
-              Een wachtwoord moet minimaal 4 tekens hebben.
-            </p>
-            <label for="id-password">Wachtwoord </label>
-            <div class="input-group">
-              <input class="form-control"
-                     id="id-password"
-                     type="password"
-                     name="password"
-                     ng-maxlength="20"
-                     ng-model="dialog.password"
-                     required>
-              <span class="input-group-addon">&nbsp;
-              </span>
-            </div>
-            <label for="id-password-repeat">Herhaal het wachtwoord</label>
-            <div class="input-group">
-              <input class="form-control"
-                     id="id-password-repeat"
-                     ng-class="{ 'warning' : 1 }"
-                     type="password"
-                     name="passwordRepeat"
-                     ng-maxlength="20"
-                     ng-model="dialog.passwordRepeat"
-                     required>
-              <span class="input-group-addon">
-<!--
-                <span class="glyphicon glyphicon-ok alert-success" ng-show="formPassword.$valid"></span>
-                <span class="glyphicon glyphicon-remove alert-danger" ng-hide="formPassword.$valid"></span>
--->
-              </span>
-            </div>
 
+              <h3>Wilt u zeker afmelden?</h3>
 
           </div>
           <div class="modal-footer">
@@ -141,8 +108,8 @@
                     data-dismiss="modal">annuleer</button>
             <button type="button"
                     class="btn btn-primary"
-                    ng-click="changePassword('change')">
-                wijzigen</button>
+                    ng-click="logout('logout')">
+                Afmelden</button>
           </div>
         </form>
       </div>

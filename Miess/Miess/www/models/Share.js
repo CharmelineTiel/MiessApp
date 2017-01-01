@@ -185,7 +185,7 @@ agendaApp.factory('Share',function($log, $rootScope, $http, Server) {
       });
   };
   var remove = function(id, scope, modelName) {
-    $rootScope.resetState();
+      $rootScope.resetState();
     $http({
       method: 'POST',
       url : Server.createUrl('share/remove/'+id)
@@ -193,7 +193,7 @@ agendaApp.factory('Share',function($log, $rootScope, $http, Server) {
       .success(function(response) {
         $rootScope.isWaiting = false;
         if (response.status && response.status.success) {
-          scope[modelName] = response.data;
+          //scope[modelName] = response.data;
         } else {
           scope[modelName].errors = response.status.error;
           $rootScope.errorMessage = isset(response.status) ? response.status.message : 'Onbekende fout';

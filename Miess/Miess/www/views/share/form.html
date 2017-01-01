@@ -78,8 +78,5 @@
       deze gebruiker heeft <b>geen</b> toegang meer tot de agenda
     </label>
   </div>
-    
-    <element ng-repeat="share in list">
-        <button class="btn btn-danger btn-lg" ng-click="remove(share)" ng-show="$index"> {{share.id}} verwijderen uit agenda</button>
-    </element>
+    <button class="btn btn-danger btn-lg" ng-click="removeShare(model.id)" ng-show="agenda.isAdmin == 1"> {{model.name}} verwijderen uit agenda</button>	
 </div>	

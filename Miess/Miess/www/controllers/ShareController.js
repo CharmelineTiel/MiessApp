@@ -109,7 +109,7 @@ agendaApp.controller('ShareController', ['$scope', 'Share', '$routeParams', 'Use
 	 */
 	$scope.add= function() {
     if (Setup.get('maxShare') > $scope.list.length) {
-      $scope.inEdit = 1;
+
       Share.create($scope);
       $scope.formState = 'add';
     } else {
@@ -135,9 +135,33 @@ agendaApp.controller('ShareController', ['$scope', 'Share', '$routeParams', 'Use
 		$scope.formState = 'view'; // first reset state
 		Share.list($scope);	
 	};
-	$scope.remove = function (share) {
+	$scope.removeShare = function (id) {
 
-	    Share.remove(share.id, $scope, 'list');
+	    $scope.model = $scope.list[id];
+	    //var index = $scope.list.indexOf(id);
+	    //if (index > -1) {
+	    //    Share.remove($scope.model.id, $scope, 'list');
+	    //    $scope.list.splice(index, 1);
+	        
+	    //}
+	    for (var index = 0 ; index < $scope.list.length ; index++) {
+	        if ($scope.list[index].id == id) {
+	            Share.remove(id, $scope, 'list');
+	            var removedShare = $scope.list.splice(index, 1);
+	            removedShare = null;           
+	            break;
+	        }
+	    }
+	    $scope.inEdit = 0;
+	    $scope.activeIndex = -1;
+	    //if(index > 1)
+	    //{
+	    //    $scope.show(index - 1);
+	    //    $scope.activeIndex = index - 1;
+	    //} else {
+	    //    $scope.formState = 'clear';
+	    //}
+	   
 	}
 
 }]);

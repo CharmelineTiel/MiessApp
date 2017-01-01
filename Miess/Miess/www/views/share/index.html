@@ -29,7 +29,8 @@
                 ng-click="save()"
                 ng-show="agenda.isAdmin==1 && (formState=='edit' || formState =='save')">
 					<span class="hidden-xs">bewaar</span><span class="visible-xs"><span class="glyphicon glyphicon glyphicon-floppy-disk"></span></span>
-				</button>		
+				</button>
+            
 				<button class="btn pull-right"
                 ng-click="send()"
                 ng-show="agenda.isAdmin==1 && (formState=='edit' && model.isAccepted==0 && model.isBlocked==0)">
@@ -59,14 +60,13 @@
 					 ng-click="inEdit || show($index)"
            ng-show="share.isOwner==0 || agenda.isAdmin==0"
 					 >
-					<div id="id-share-{{ share.id}}" class="view-list-caption" >{{ share.name }}
+					<div id="id-share-{{ share.id}}" class="view-list-caption" >{{ share.name }}	
             <span class="pull-right badge ">
               <span class="glyphicon glyphicon-time" ng-show="share.isAccepted==0 && share.isDenied==0"></span>
               <span class="glyphicon glyphicon-ok" ng-show="share.isAccepted==1"></span>
               <span class="glyphicon glyphicon-remove" ng-show="share.isDenied==1"></span>
             </span>
-          </div>
-                   
+          </div>                 
 				</div>
 				<div class="list-end"></div>
 			</div>

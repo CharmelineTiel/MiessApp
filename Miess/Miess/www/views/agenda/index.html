@@ -2,7 +2,7 @@
   Agenda definition
 -->
 <div id="id-agenda" ng-controller="AgendaController">
-    <div id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+    <div id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation"  ng-swipe-left="closeMenu()">
         <div class="col-md-12 agenda-title" ng-controller="ShareController" ng-show="agenda.isActive==1">
             <h3>{{ agenda.title }}</h3>
         </div> 
@@ -10,33 +10,32 @@
             <a class="list-group-item"
                  ng-class="{active: menu.activeAgenda=='agendaDay'}"
                  ng-click="menuClick('agendaDay')">
-                <span class="glyphicon glyphicon-th-list">&nbsp;Dag</span>
+                <span class="glyphicon glyphicon-th-list"></span>&nbsp;<span>&nbsp;Dag</span>
             </a>
             <a class="list-group-item"
                  ng-class="{active: menu.activeAgenda=='agendaWeek'}"
                  ng-click="menuClick('agendaWeek')">
-                <span class="glyphicon glyphicon-th-large">&nbsp;Week</span>
+                <span class="glyphicon glyphicon-th-large"></span>&nbsp;<span>&nbsp;Week</span>
             </a>
             <a class="list-group-item"
                  ng-class="{active: menu.activeAgenda=='month'}"
                  ng-click="menuClick('month')">
-                <span class="glyphicon glyphicon-th">&nbsp;Maand</span>
+                <span class="glyphicon glyphicon-th"></span>&nbsp;<span>&nbsp;Maand</span>
             </a>
             <br />
         </div>
         <div class="col-md-12" ng-controller="ProfileController">
               <!--possibly a seperate view for the part below-->
-
             <div class="list-group">
                 <h3>Mijn agenda</h3>
                 <div class="list-group-item disabled" ng-repeat="agenda in model.agendas | filter: {isOwner:1}">                                               
                             <p>{{ agenda.title }}</p>
-                            <button class="btn btn-success"
+                            <button class="btn btn-primary"
                                     ng-hide="agenda.isActive==1"
                                     ng-click="activateAgenda(agenda.shareId)">
                                 Activeer
                             </button>
-                            <button class="btn btn-primary disabled" ng-show="agenda.isActive==1">Actief</button>                                 
+                            <button class="btn btn-success disabled" ng-show="agenda.isActive==1">Actief</button>                                 
                 </div><br />
 
 
@@ -45,7 +44,7 @@
                             <p>{{ agenda.title }}</p>            
                             <div ng-show="agenda.isAccepted">
                                 <!--<p>Je gebruikersnaam binnen deze agenda is <b>{{ //agenda.name}}</b></p>-->
-                                <button class="btn btn-success" ng-hide="agenda.isActive==1" ng-click="activateAgenda(agenda.shareId)">Activeer</button>
+                                <button class="btn btn-primary" ng-hide="agenda.isActive==1" ng-click="activateAgenda(agenda.shareId)">Activeer</button>
                                 <!--<button class="btn btn-danger pull-right" ng-hide="agenda.isActive==1" ng-click="removeAgenda(agenda.shareId)">Verwijder</button>-->
                             </div>
                             <div ng-show="agenda.isDenied || agenda.isBlocked">
@@ -62,7 +61,7 @@
                                     <button class="btn btn-danger btn-sm" ng-click="denyShare(agenda.shareId)">Uitnodiging afwijzen</button>
                                 </p>
                             </div>
-                            <button class="btn btn-primary disabled btn-sm" ng-show="agenda.isActive==1">Actief</button>                  
+                            <button class="btn btn-success disabled btn-sm" ng-show="agenda.isActive==1">Actief</button>                  
                 </div>
 
             </div>
@@ -73,20 +72,20 @@
         </div>         
     </div>
 	<header id="id-header"  class="bar bar-nav row">
-        <div class="col-xs-4">
+        <div class="col-xs-2">
+            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="col-xs-4 pull-right">
             <button class="btn" ng-click="previous()">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </button>
             <div class="header-text hidden-xs">{{ menu.date }}&nbsp;</div>
             <button class="btn" ng-click="next()">
                 <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-        </div>
-        <div class="col-xs-8">
-            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
         </div>
 </header>
@@ -99,8 +98,7 @@
 
         <div class="content" ng-swipe-right="previous()" ng-swipe-left="next()">
                 <div ng-include="'views/agenda/fullCalendar.html'"></div>
-                <div id="container-floating">
-               
+                <div id="container-floating">             
                         <div ng-show="formState=='create'" ng-include="'views/agenda/new.html'">               
                     </div>
                             <div id="floating-button"

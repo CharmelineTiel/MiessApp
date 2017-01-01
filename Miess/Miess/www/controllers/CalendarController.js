@@ -59,7 +59,7 @@ agendaApp.controller('CalendarController', ['$scope', 'Server', '$log', '$rootSc
 		},
 		columnFormat:{
 		    day: false,
-		    week: "ddd d"
+		    week: "ddd dd"
 		},
 		axisFormat: 'H',
 		timeFormat: {

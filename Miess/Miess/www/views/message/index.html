@@ -35,19 +35,15 @@
 
         <button class="btn pull-right"
                 ng-click="answer()"
-                ng-hide="formState=='none' || formState=='clear'">
+                ng-hide="formState=='none' || formState=='clear' || model.isConcept==1">
 					<span class="hidden-xs">reageer&nbsp; </span><span class="glyphicon glyphicon-retweet"></span>
 				</button>						
 			</div>
-			<div class="col-sm-4">
-				<button class="btn pull-right"
-                ng-click="add()">
-					<span class="hidden-xs">nieuw </span><span class="glyphicon glyphicon-plus"></span>
-				</button>						
+			<div class="col-sm-4">						
 				<button class="btn pull-right"
                 ng-click="sendMessage()"
                 ng-show="formState=='edit' || formState=='add'">
-					<span class="hidden-xs">verstuur</span><span class="visible-xs"><span class="glyphicon glyphicon-"></span></span>
+					<span class="hidden-xs">verstuur</span><span class="visible-xs"><span class="glyphicon glyphicon-send"></span></span>
 				</button>		
 			</div>			
 		</header>
@@ -64,7 +60,7 @@
 					<div ng-show="newMessages.length > 0" class="msg-new msg-list">
 						<div ng-repeat="message in newMessages"
                  class="msg-item"
-								 ng-click="showById(message.id)"
+								 ng-click="getMessage(message.id)"
                  ng-class="{'not-read': message.isRead==0}">
               <div ng-include="'views/message/short.html'"></div>
 						</div>
@@ -98,7 +94,16 @@
 					<div ng-include="'views/message/recipients.html'"></div>				
 				</div>	
 			</div>
-		</div>
+            <div id="container-floating">
+                    <div id="floating-button"
+                         class="add-button"
+                         ng-click="add()"
+                         ng-show="agenda.isWritable==1"
+                         ng-hide="formState=='add'">
+                        <span class="plus glyphicon glyphicon-plus"></span>
+                    </div>
+                </div>
+            </div>
 
 
     <div class="modal fade" id="confirmNoRecipients" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -114,7 +119,7 @@
               Er kan gekozen worden om het bericht aan een groep te sturen. Alle leden van de groep
               krijgen dan het bericht.
             </p>
-            <p>Moet het bericht toch verstuurd/bewaard worden zonder ontvanger?</p>
+            <p>Moet het bericht toch bewaard worden zonder ontvanger?</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">annuleer</button>
@@ -123,7 +128,6 @@
         </div>
       </div>
     </div>
-
 	</div>
 </form>
 

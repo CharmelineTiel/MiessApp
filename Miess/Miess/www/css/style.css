@@ -7,7 +7,9 @@
 body, h1, h2, div, h4 {
 	font-family: Arial, Verdana, "Helvetica Neue", Helvetica, sans-serif;
 }
-
+body{
+    color:#555; 
+}
 p {
 	margin: 0 0 18px 0
 } /* extra onder */
@@ -637,8 +639,8 @@ span.new_row a {
 */
 
 .fc-header-title h2 {
-	font-size: 18px;
-	color: #0095da;
+    font-size: 18px;
+    color: #555;
     padding-top: 15px;
 }
 /* --------------- Maken van een activiteit. Dan geen kalender ----------- */
@@ -671,7 +673,7 @@ div.overlay_calendar .overlay_tab {
 	position: absolute;
 	right: -90px;
 	font-weight: bold;
-	writing-mode: tb-rl;
+	writing-mode: vertical-rl;
 	top: 50px;
 	width: 140px; /* indien aangepast ook right en top aanpasen*/
 	text-align: center;
@@ -914,10 +916,12 @@ div.miess_modal_under {
     height: 3px;
 }
 .navbar-toggle {
-    margin-top: 5px;
+    margin-top: 7px;
     background: rgba(255, 255, 255, 0.21);
-    padding: 5px 4px;
+    padding: 3px 3px;
     border-radius: 3px;
+    float: none;
+    margin-left: 23px;
 }
 a.list-group-item.active, 
 a.list-group-item.active:hover, 
@@ -935,9 +939,6 @@ a.list-group-item.active:focus{
      border-top-right-radius: 0;
     border-top-left-radius: 0;
 }
-.navbar-toggle {
-    margin-right: 0; 
-}
 .navmenu{
     width: 250px;
 }
@@ -954,8 +955,8 @@ a.list-group-item.active:focus{
 }
 /*Floating buttons */
 #floating-button{
-  width: 55px;
-  height: 55px;
+  width: 56px;
+  height: 56px;
   margin: 20px auto 0;
   display: block;
   border-radius: 50%;
@@ -972,9 +973,13 @@ a.list-group-item.active:focus{
   cursor: pointer;
   padding: 2px 0;
 }
-.add-button, .edit-button{
+.add-button{
   background: #179103;
   border-color:#179103;
+}
+.edit-button{
+  background: #016ac3;
+  border-color:#016ac3;
 }
 .remove-button{
   background: #d44148;
@@ -986,6 +991,13 @@ a.list-group-item.active:focus{
   margin: 1em;
   right: 0px;
 }
+.activity-panel .caption{
+    padding: 5px 20px;
+    color: white;
+    border-radius: 7px;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
 #container-floating{
   bottom: 10px;
   position: fixed;
@@ -996,23 +1008,43 @@ a.list-group-item.active:focus{
   color: white;
   position: absolute;
   top: 0;
-  display: block;
+  display:block;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
   padding: 0;
   margin: 0;
-  line-height: 55px;
+  line-height: 56px;
   font-size: 20px;
   animation: plus-out 0.3s;
   transition: all 0.3s;
 }
 .plus{
     font-family: "roboto";
-    font-size: 38px;
+    font-size: 30px;
 }
 /*Add new activity form*/
 .input-group .form-control {
      position: static; 
+}
+.list-group-item{
+    font-size: 15px;
+}
+.list-group-item .btn-primary{
+    opacity: 0.6;
+}
+@media (max-width: 768px) {
+    .fc-day.fc-sun.fc-widget-content.fc-past.fc-last {
+        width: 40px;
+    }
+}
+.bar {
+    height: 40px;
+}
+.bar .btn {
+    padding: 6px 12px 4px;
+}
+.btn-success.disabled{
+    opacity: 1;
 }

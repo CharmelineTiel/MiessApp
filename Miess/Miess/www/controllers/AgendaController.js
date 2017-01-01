@@ -82,10 +82,13 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
       allDay: event.allDay,
       typeId: event.typeId,
       id: event.id,
+      businessHours: event.businessHours
       //startDate: moment(event.startDate).format('YYYY-MM-DD')
     };
       //		$log.info('send: activityShow on ', $scope.model); 
-    if ($scope.model && $scope.model.id > 0) {
+
+    if ($scope.model && $scope.model.id > 0)
+    {
         Server.open('/agenda/view/' + $scope.model.id);
     }
     $scope.$apply();		// is a jQuery event so must apply
@@ -104,9 +107,7 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
     }
     $('#calendar').fullCalendar('gotoDate', date);
     $scope.menuClick('agendaDay');
-
     //$scope.formState = 'create';    // open the menu
-
     $scope.$apply();
     //$('#calendar').fullCalendar('changeView', 'agendaDay');
   };
@@ -145,6 +146,14 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
 
     //	}, 1);
     // $('#calendar').fullCalendar('today');
+  };
+
+  $scope.closeMenu = function () {   
+      $('#myNavmenu').offcanvas('hide');
+  };
+  $scope.OpenMenu = function () {
+
+      $('#myNavmenu').offcanvas('show');
   };
   /**
    * move to next day, week, month
@@ -197,5 +206,4 @@ agendaApp.controller('AgendaController', ['$scope', 'Server', 'ActivityType', 'A
     $('nav').css('bottom', '20px');
   }
 */
-
 }]);

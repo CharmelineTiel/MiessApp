@@ -2,15 +2,12 @@
 	<form name="activityForm" ng-submit="update()">
 		<fieldset>         
 			<header id="id-header" class="bar bar-nav header-{{model.typeId}} row">
-				<div class="col-xs-7">
+				<div class="col-xs-2">
 				<span class="btn pull-left" ng-click="cancel()" ng-show="agenda.isWritable==1 || showMessage ==1">
 					annuleer
-				</span>
-				<!--<span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1" class="btn pull-right" ng-click="del()">
-					verwijder <span class="glyphicon glyphicon-remove"></span>
-				</span>-->				
+				</span>			
 				</div>	
-				<div class="col-xs-5">
+		<div class="col-xs-10">
           <span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1"
                 class="btn pull-right"
                 ng-click="update()"
@@ -18,11 +15,15 @@
             opslaan
           </span>
 
-          <span ng-show="(formState=='invite') && agenda.isWritable==1 && model.inviteIds"
-                class="btn pull-right"
-                ng-click="model.resendInvitation=1; update()">
-            opslaan &amp; uitnodigen&nbsp;<span class="glyphicon glyphicon-plus"></span>
-          </span>
+            <span ng-show="(formState=='invite') && agenda.isWritable==1 && model.inviteIds"
+                  class="btn pull-right"
+                  ng-click="model.resendInvitation=1; update()">
+                opslaan &amp; uitnodigen&nbsp;
+            </span>
+            <span ng-show="(formState=='edit' || formState=='invite') && agenda.isWritable==1" class="btn pull-right" ng-click="del()">
+                verwijder <span class="glyphicon glyphicon-remove"></span>
+            </span>	
+
 
           <span ng-show="(formState=='edit' && model.inviteIsSend==1) && agenda.isWritable==1"
                 class="btn pull-right"
@@ -81,15 +82,6 @@
             </div>
 					</div>
 				</div>
-
-                <div id="container-floating">
-                    <div id="floating-button"
-                         class="remove-button"
-                         ng-click="del()"
-                         ng-show="(formState=='edit' || formState == 'invite') && agenda.isWritable==1">                         
-                        <span class="remove glyphicon glyphicon-trash"></span>
-                    </div>
-                </div>
 			</div>	
 		</fieldset>			
 	</form>		
